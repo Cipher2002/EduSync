@@ -1,3 +1,5 @@
+sessionStorage.setItem('targetedLanguage', 'en');
+
 var faq = document.getElementsByClassName("faq-page");
 var i;
 for (i = 0; i < faq.length; i++) {
@@ -148,6 +150,7 @@ function translateAllElements() {
     if (selectedLanguage === 'en') {
       window.location.reload()
     }
+    sessionStorage.setItem('targetedLanguage', selectedLanguage);
     fetch('/translate', {
         method: 'POST',
         headers: {
