@@ -42,20 +42,34 @@
           <div class="input-container">
             <div class="form-group">
               <label for="email">Username</label>
-              <input type="email" id="email" autocomplete="new-email" />
+              <input id="email" type="email" id="email" autocomplete="off" />
             </div>
             <div class="form-group">
               <label for="password">Password</label>
-              <input type="password" id="password" autocomplete="new-password" />
+              <input id="password" type="password" id="password" autocomplete="off" />
             </div>
           </div>
 
           <div class="remember-forgot">
-            <a href="register.html" target="_blank">New Institute ?</a><span> | </span>
-            <a href="forgot.html" target="_blank">Forgot password?</a>
+            <a href="{{ url_for('register') }}">New Institute ?</a><span> | </span>
+            <a href="#" id='popup-link'>Change password</a>
           </div>
 
-          <button class="login-btn">Log In</button>
+          <div id="popup-window">
+            <h1>OTP Using JavaScript</h1>
+            <div class="form">
+              <input type="email" id="popup-email" placeholder="Enter Email" />
+              <div class="otpverify">
+                <input type="text" id="otp_inp" placeholder="Enter the OTP"/>
+                <button class="btn" id="otp-btn">Verify</button>
+              </div>
+              <button onclick="sendOTP()" class="btn">Send OTP</button>
+            </div>
+            <button id="close-button">Close</button>
+          </div>
+
+          <button id="login-button" class="login-btn">Log In</button>
     </section>
+    <script type="module" src="/static/js/login.js"></script>
   </body>
 </html>

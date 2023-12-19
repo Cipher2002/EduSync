@@ -148,3 +148,54 @@ function sendMessage() {
       }, 1000); // Simulating 1 second processing time, replace with your actual processing time
   }
 }
+
+let originalEnglishText = [];
+let translatedText = [];
+
+// Function to collect text from elements with data-translate attribute during initial page load
+function collectInitialText() {
+    originalEnglishText = [];
+    document.querySelectorAll('[data-translate]').forEach(element => {
+        originalEnglishText.push(element.textContent);
+    });
+}
+
+// Function to translate all text elements
+function translateAllElements() {
+    const selectedLanguage = document.getElementById('language-select').value;
+    if (selectedLanguage === 'en') {
+      window.location.reload()
+    }
+    sessionStorage.setItem('targetedLanguage', selectedLanguage);
+    fetch('/translate', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            texts: originalEnglishText,
+            target_lang: selectedLanguage,
+        }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        translatedText = data.translated_texts || [];
+        document.querySelectorAll('[data-translate]').forEach((element, index) => {
+            element.textContent = translatedText[index] || '';
+        });
+
+    })
+    .catch(error => {
+        console.error('Translation error:', error);
+    });
+}
+
+// Bind the onchange event to the language-select dropdown
+document.getElementById('language-select').addEventListener('change', function () {
+    translateAllElements();
+});
+
+// Initialize the originalEnglishText variable with the original text of elements with data-translate attribute during initial page load
+document.addEventListener('DOMContentLoaded', function() {
+    collectInitialText();
+});

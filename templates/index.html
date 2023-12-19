@@ -4,8 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="/static/css/index.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-...</code>" crossorigin="anonymous">
-    
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha384-...</code>"
+      crossorigin="anonymous"
+    />
+
     <title>AAA</title>
     <link rel="title icon" href="/static/images/head.png" type="image/png" />
   </head>
@@ -24,21 +29,26 @@
         />
       </div>
       <div>
+<<<<<<< HEAD
         <img 
           src="/static/images/emblem.png"
          id="emblem"
           style="width: 90px; height: 90px"
+=======
+        <img
+          src="/static/images/download.png"
+          id="emblem"
+          style="width: 170px; height: 80px"
+>>>>>>> fa1def8396de5248b3dbbe80880ac3caac0d3aad
         />
       </div>
       <div id="buttons">
-        <span id="text-size">Text Size</span>
+        <span id="text-size" data-translate>Text Size</span>
         <button class="text-button" onclick="increaseFontSize()">A+</button>
         <button class="text-button" onclick="resetFontSize()">A</button>
         <button class="text-button" onclick="decreaseFontSize()">A-</button>
-        <a href="/templates/login.html" class="login-button">Login</a>
-        <a class="register-button" href="/templates/register.html">
-          Register
-        </a>
+        <a href="{{ url_for('login') }}" class="login-button" data-translate>Login</a>
+        <a class="register-button" href="{{ url_for('register') }}" data-translate>Register</a>
       </div>
     </header>
     
@@ -49,39 +59,27 @@
 
         <span id="spanTime"></span>
       </div>
-     
+
       <div id="about-link">
-        <select
-          class="nav-link"
-          name="languages"
-          style="background-color: #1e2257; color: white"
-        >
-          <option value="zh">English</option>
-          <option value="es">Assamese</option>
-          <option value="en">Bengali</option>
-          <option value="hi">Gujrati</option>
-          <option value="ar">Kannada</option>
-          <option value="pt">Malayalam</option>
-          <option value="bn">Marathi</option>
-          <option value="ru">Odia</option>
-          <option value="ja">Punjabi</option>
-          <option value="pa">Telugu</option>
-          <option value="pa">Tamil</option>
+        <select id="language-select" class="nav-link" name="languages" style="background-color: #1e2257; color: white">
+          <option value="en">English</option>
+          <option value="as">Assamese</option>
+          <option value="hi">Hindi</option>
+          <option value="bn">Bengali</option>
+          <option value="gu">Gujrati</option>
+          <option value="kn">Kannada</option>
+          <option value="ml">Malayalam</option>
+          <option value="mr">Marathi</option>
+          <option value="or">Odia</option>
+          <option value="pa">Punjabi</option>
+          <option value="ta">Tamil</option>
+          <option value="te">Telugu</option>
         </select>
-        <a href="#" class="nav-link">Home</a>
-        <a href="#" class="nav-link">Courses</a>
-        <a href="https://www.aicte-india.org/bulletins" class="nav-link"
-          >News</a
-        >
-        <a
-          href="https://www.aicte-india.org/opportunities/students/overview"
-          class="nav-link"
-          >Opppurtunities</a
-        >
-        <a href="#" class="nav-link">Fee</a>
-        <a href="https://www.aicte-india.org/about-us/history" class="nav-link"
-          >About</a
-        >
+        <a href="#" class="nav-link" data-translate>Home</a>
+        <a href="#" class="nav-link" data-translate>Courses</a>
+        <a href="https://www.aicte-india.org/bulletins" class="nav-link" data-translate>News</a>
+        <a href="#" class="nav-link" data-translate>Fee</a>
+        <a href="https://www.aicte-india.org/about-us/history" class="nav-link" data-translate>About</a>
       </div>
     </section>
     <div class="carousel">
@@ -210,120 +208,156 @@
     <h1 class="faq-heading" style="text-align: center;">Frequently Asked Questions</h1>
     <section class="faq-container">
         <div class="faq-one">
-            <!-- faq question -->
-            <h1 class="faq-page">We have 5 Diploma Courses, Can we apply for conversion of Two Diploma Courses only into
-              Degree Courses? </h1>
-            <!-- faq answer -->
-            <div class="faq-body">
-                <p>No. Partial conversion of Levels is not permitted. </p>
-            </div>
+          <!-- faq question -->
+          <h1 class="faq-page" data-translate>
+            We have 5 Diploma Courses, Can we apply for conversion of Two
+            Diploma Courses only into Degree Courses?
+          </h1>
+          <!-- faq answer -->
+          <div class="faq-body" data-translate>
+            <p>No. Partial conversion of Levels is not permitted.</p>
+          </div>
         </div>
-        <hr class="hr-line">
+        <hr class="hr-line" />
         <div class="faq-two">
-            <!-- faq question -->
-            <h1 class="faq-page">Can I apply for closure of the existing Institution and open a new Institution at the same
-              premises?</h1>
-            <!-- faq answer -->
-            <div class="faq-body">
-                <p> Yes. If the Scrutiny Committee found the application for closure is in order and recommend
-                  for the closure of the existing Programme(s), then the processing for new Institution for the
-                  new Programme (except Engineering and Technology/ Pharmacy) shall be considered. </p>
-            </div>
+          <!-- faq question -->
+          <h1 class="faq-page" data-translate>
+            Can I apply for closure of the existing Institution and open a new
+            Institution at the same premises?
+          </h1>
+          <!-- faq answer -->
+          <div class="faq-body" data-translate>
+            <p>
+              Yes. If the Scrutiny Committee found the application for closure
+              is in order and recommend for the closure of the existing
+              Programme(s), then the processing for new Institution for the new
+              Programme (except Engineering and Technology/ Pharmacy) shall be
+              considered.
+            </p>
+          </div>
         </div>
-        <hr class="hr-line">
+        <hr class="hr-line" />
         <div class="faq-three">
-            <!-- faq question -->
-<h1 class="faq-page">Whether an Institution offering MBA could be merged with an Institution offering
-  Engineering Courses? </h1>
-            <!-- faq answer -->
-            <div class="faq-body">
-                <p>Yes, if both the Institutions are run by the same Trust/ Society/ Company. </p>
-            </div>
+          <!-- faq question -->
+          <h1 class="faq-page" data-translate>
+            Whether an Institution offering MBA could be merged with an
+            Institution offering Engineering Courses?
+          </h1>
+          <!-- faq answer -->
+          <div class="faq-body">
+            <p data-translate>
+              Yes, if both the Institutions are run by the same Trust/ Society/
+              Company.
+            </p>
+          </div>
         </div>
-        <hr class="hr-line">
+        <hr class="hr-line" />
         <div class="faq-four">
-            <!-- faq question -->
-<h1 class="faq-page">Name of our affiliating University does not appear in the affiliating University drop down.</h1>
-            <!-- faq answer -->
-            <div class="faq-body">
-                <p>  Contact Approval Bureau for inclusion of the University name in the portal. Send an email
-                  of Institution representation on the Letter head to helpdeskab@aicte-india.org.  </p>
-            </div>
+          <!-- faq question -->
+          <h1 class="faq-page" data-translate>
+            Name of our affiliating University does not appear in the
+            affiliating University drop down.
+          </h1>
+          <!-- faq answer -->
+          <div class="faq-body">
+            <p data-translate>
+              Contact Approval Bureau for inclusion of the University name in
+              the portal. Send an email of Institution representation on the
+              Letter head to helpdeskab@aicte-india.org.
+            </p>
+          </div>
         </div>
-        <hr class="hr-line">
+        <hr class="hr-line" />
         <div class="faq-five">
-            <!-- faq question -->
-<h1 class="faq-page">For Under Graduate Degree Programme in Engineering Technology, whether Diploma
-  qualified students will also be considered on par with students passed 10+2 examination? </h1>
-            <!-- faq answer -->
-            <div class="faq-body">
-                <p> Students passed Diploma (in Engineering and Technology) will be considered, subject to
-                  vacancies in the First Year, in case the vacancies at lateral entry are exhausted.</p>
-            </div>
+          <!-- faq question -->
+          <h1 class="faq-page" data-translate>
+            For Under Graduate Degree Programme in Engineering Technology,
+            whether Diploma qualified students will also be considered on par
+            with students passed 10+2 examination?
+          </h1>
+          <!-- faq answer -->
+          <div class="faq-body">
+            <p data-translate>
+              Students passed Diploma (in Engineering and Technology) will be
+              considered, subject to vacancies in the First Year, in case the
+              vacancies at lateral entry are exhausted.
+            </p>
+          </div>
         </div>
-        <hr class="hr-line">
+        <hr class="hr-line" />
         <div class="faq-six">
-            <!-- faq question -->
-<h1 class="faq-page">How to get a copy of Corrigendum EoA / Corrigendum LoA in case of corrections made in
-  EoA or LoA from AICTE Web Portal? </h1>
-            <!-- faq answer -->
-            <div class="faq-body">
-                <p> Institution need to check drop down menu and click on ‘Corrigendum EoA’ or ‘Corrigendum
-                  LoA’ as the case may be, instead of clicking on ‘EoA’ or ‘LoA’ menu.  </p>
-            </div>
+          <!-- faq question -->
+          <h1 class="faq-page" data-translate> 
+            How to get a copy of Corrigendum EoA / Corrigendum LoA in case of
+            corrections made in EoA or LoA from AICTE Web Portal?
+          </h1>
+          <!-- faq answer -->
+          <div class="faq-body">
+            <p data-translate>
+              Institution need to check drop down menu and click on ‘Corrigendum
+              EoA’ or ‘Corrigendum LoA’ as the case may be, instead of clicking
+              on ‘EoA’ or ‘LoA’ menu.
+            </p>
+          </div>
         </div>
-    </section>
-</main>
-<div class="chatboy-icon" id="chatboy-icon" onclick="toggleChatbox()">
-  <img src="/static/images/chatbot.png" alt="Chatboy Icon" width="50px" height="50px">
-</div>
+      </section>
+    </main>
+    <div class="chatboy-icon" id="chatboy-icon" onclick="toggleChatbox()">
+      <img
+        src="/static/images/chatbot.png"
+        alt="Chatboy Icon"
+        width="50px"
+        height="50px"
+      />
+    </div>
 
-<!-- Chatbox -->
-<div class="chatbox" id="chatbox">
-  <!-- Your chatbox content goes here -->
-  <p>User: Hello! I'm IBot.</p>
-  <div class="input-container">
-    <input type="text" placeholder="Type your message" >
-    <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
-    <div class="loading-dots"></div>
-  </div>
-  <!-- Close button -->
-  <span class="close-btn" onclick="toggleChatbox()">X</span>
-</div>
-
+    <!-- Chatbox -->
+    <div class="chatbox" id="chatbox">
+      <!-- Your chatbox content goes here -->
+      <p>User: Hello! I'm IBot.</p>
+      <div class="input-container">
+        <input type="text" placeholder="Type your message" />
+        <button onclick="sendMessage()">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+        <div class="loading-dots"></div>
+      </div>
+      <!-- Close button -->
+      <span class="close-btn" onclick="toggleChatbox()">X</span>
+    </div>
 
     <footer class="foot">
       <div>
         <div class="footer-menu">
           <ul>
             <li>
-              <a href="https://www.aicte-india.org/terms-conditions"
+              <a href="https://www.aicte-india.org/terms-conditions" data-translate
                 >Term of use</a
               >
             </li>
             <li>
-              <a href="https://www.aicte-india.org/privacy-policy"
+              <a href="https://www.aicte-india.org/privacy-policy" data-translate
                 >Privacy Policy</a
               >
             </li>
             <li>
-              <a href="https://www.aicte-india.org/grievance/rti"
+              <a href="https://www.aicte-india.org/grievance/rti" data-translate
                 >Right to Information</a
               >
             </li>
             <li>
-              <a href="https://www.aicte-india.org/reports/overview">Reports</a>
+              <a href="https://www.aicte-india.org/reports/overview" data-translate>Reports</a>
             </li>
             <li>
-              <a href="https://www.aicte-india.org/directory">Directory</a>
+              <a href="https://www.aicte-india.org/directory" data-translate>Directory</a>
             </li>
             <li>
-              <a href="https://www.aicte-india.org/centralized-support-system"
+              <a href="https://www.aicte-india.org/centralized-support-system" data-translate
                 >Centralized Support System</a
               >
             </li>
             <li>
-              <a href="https://www.aicte-india.org/survey-form"
+              <a href="https://www.aicte-india.org/survey-form" data-translate
                 >Reporting by Institutes</a
               >
             </li>
@@ -331,23 +365,23 @@
         </div>
         <div class="footer-menu">
           <ul>
-            <li><a href="#">Verify Institute Approval</a></li>
+            <li><a href="#" data-translate>Verify Institute Approval</a></li>
             <li>
-              <a href="https://www.aicte-india.org/contact">Contact us</a>
+              <a href="https://www.aicte-india.org/contact" data-translate>Contact us</a>
             </li>
-            <li><a href="#">AICTE Dashboard</a></li>
+            <li><a href="#" data-translate>AICTE Dashboard</a></li>
             <li>
-              <a href="https://www.aicte-india.org/CyberSecurity"
+              <a href="https://www.aicte-india.org/CyberSecurity" data-translate
                 >Cyber Security</a
               >
             </li>
             <li>
-              <a href="https://deemeduniversity.aicte-india.org/"
+              <a href="https://deemeduniversity.aicte-india.org/" data-translate
                 >Deemed University Result</a
               >
             </li>
             <li>
-              <a href="https://facilities.aicte-india.org/pgdm"
+              <a href="https://facilities.aicte-india.org/pgdm" data-translate
                 >PGDM Student Verification</a
               >
             </li>
@@ -357,6 +391,5 @@
     </footer>
   </div>
     <script src="/static/js/index.js"></script>
-   
   </body>
 </html>
