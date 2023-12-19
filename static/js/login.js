@@ -1,7 +1,6 @@
-const target_lang = sessionStorage.getItem('targetedLanguage');
-console.log(target_lang);
 
-if (target_lang != 'en'){
+if (localStorage.getItem('targetedLanguage') != 'en') {
+
   let originalEnglishText = [];
   let translatedText = [];
 
@@ -13,8 +12,9 @@ if (target_lang != 'en'){
       });
   }
   collectInitialText();
+  
   function translateAllElements() {
-    const selectedLanguage = document.getElementById('language-select').value;
+    const selectedLanguage = localStorage.getItem('targetedLanguage');
     if (selectedLanguage === 'en') {
       window.location.reload()
     }
@@ -43,7 +43,6 @@ if (target_lang != 'en'){
   }
   translateAllElements();
 }
-
 document.getElementById("login-button").addEventListener("click", (e) => {
     const username = document.getElementById("email").value;
     const password = document.getElementById("password").value;
@@ -59,7 +58,7 @@ document.getElementById("login-button").addEventListener("click", (e) => {
       }),
     }).then((response) => {
         if (response.status === 200) {
-          window.location.href = "/dashboard";
+          window.location.href = "/document-verify";
         } else {
           alert("Invalid Credentials");
         }
