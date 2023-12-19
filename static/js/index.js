@@ -1,15 +1,14 @@
+localStorage.setItem('targetedLanguage', 'en');
 
 window.addEventListener('load', function () {
-  // Display the logo at its normal size
   var logo = document.getElementById('load');
   logo.style.transform = 'scale(1)';
   document.getElementById('content').style.opacity = '0.3';
   
-  // After a delay, slowly zoom in the logo
+
   setTimeout(function () {
     logo.style.transform = 'scale(1.5)';
-  }, 1000); // Adjust the delay as needed
-  // After the zoom-in transition is complete, hide loading logo and display content
+  }, 1000);
   logo.addEventListener('transitionend', function () {
     document.getElementById('logo-container').style.opacity = '0';
     document.getElementById('content').style.opacity = '1';
@@ -20,10 +19,7 @@ var faq = document.getElementsByClassName("faq-page");
 var i;
 for (i = 0; i < faq.length; i++) {
     faq[i].addEventListener("click", function () {
-        /* Toggle between adding and removing the "active" class,
-        to highlight the button that controls the panel */
         this.classList.toggle("active");
-        /* Toggle between hiding and showing the active panel */
         var body = this.nextElementSibling;
         if (body.style.display === "block") {
             body.style.display = "none";
@@ -115,37 +111,50 @@ function toggleChatbox() {
 }
 
 function sendMessage() {
-  var inputField = document.querySelector('.chatbox input');
-  var message = inputField.value.trim();
+  const inputField = document.getElementById('chatbot-input');
+const uploadButton = document.getElementById('chatbot_upload');
 
-  if (message !== '') {
-      // Display loading dots to simulate the chatbot is typing
-      var loadingDots = document.querySelector('.loading-dots');
-      loadingDots.style.display = 'inline-block';
+// Add an event listener to the button to trigger the function
+uploadButton.addEventListener('click', handleUserInput);
 
-      // Simulate processing time (replace this with your actual message processing logic)
-      setTimeout(function () {
-          // Clear the input field
-          inputField.value = '';
+function handleUserInput() {
+    const input_data = inputField.value;
+    console.log(input_data);
 
-          // Hide loading dots
-          loadingDots.style.display = 'none';
+    // Make a POST request to the Flask app
+    fetch('/ask', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            question: input_data,
+        }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Handle the answers
+        displayChatMessage('User', input_data);
+        displayChatMessage('Chatbot', data['answers']);
+        
+        // Clear the input field
+        inputField.value = '';
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+  }
 
-          // Get the chatbox content container
-          var chatboxContent = document.querySelector('.chatbox');
+  function displayChatMessage(sender, message) {
+      // Get the chatbox content container
+      var chatboxContent = document.querySelector('.chatbox');
 
-          // Append the user's message and chatbot's reply to the chatbox
-          var userMessage = '<p>User: ' + message + '</p>';
-          var chatbotReply = '<p>Chatbot: This is a sample reply.</p>';
-          
-          // Insert the chatbot's reply before the user's message
-          
-          chatboxContent.insertAdjacentHTML('beforeend', userMessage);
-          chatboxContent.insertAdjacentHTML('beforeend', chatbotReply);
+      // Append the sender's message to the chatbox
+      var messageHTML = `<p>${sender}: ${message}</p>`;
+      chatboxContent.insertAdjacentHTML('beforeend', messageHTML);
 
-          // Scroll the chatbox to the bottom to show the latest messages
-          chatboxContent.scrollTop = chatboxContent.scrollHeight;
-      }, 1000); // Simulating 1 second processing time, replace with your actual processing time
+      // Scroll the chatbox to the bottom to show the latest messages
+      chatboxContent.scrollTop = chatboxContent.scrollHeight;
   }
 }
 
@@ -163,6 +172,7 @@ function collectInitialText() {
 // Function to translate all text elements
 function translateAllElements() {
     const selectedLanguage = document.getElementById('language-select').value;
+    localStorage.setItem('targetedLanguage', selectedLanguage);
     if (selectedLanguage === 'en') {
       window.location.reload()
     }

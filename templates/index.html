@@ -29,17 +29,10 @@
         />
       </div>
       <div>
-<<<<<<< HEAD
         <img 
           src="/static/images/emblem.png"
          id="emblem"
           style="width: 90px; height: 90px"
-=======
-        <img
-          src="/static/images/download.png"
-          id="emblem"
-          style="width: 170px; height: 80px"
->>>>>>> fa1def8396de5248b3dbbe80880ac3caac0d3aad
         />
       </div>
       <div id="buttons">
@@ -108,7 +101,7 @@
        <img src="/static/images/pmsc.png" >
       
        
-       <div class="text">
+       <div class="text" data-translate>
           <p>Prime Minister's Special Scholarship Scheme(PMSS)</p>
             
         </div>
@@ -118,7 +111,7 @@
       <img src="/static/images/rural.png" >
       
        
-      <div class="text">
+      <div class="text" data-translate>
          <p>Unnat Bharat Abhiyan in rural development process</p>
            
        </div>
@@ -128,7 +121,7 @@
       <img src="/static/images/scholarship.png" >
       
        
-       <div class="text">
+       <div class="text" data-translate>
           <p>National <br>E-Scholarship</p>
             
         </div>
@@ -138,7 +131,7 @@
       <img src="/static/images/vidya.png" >
       
        
-       <div class="text">
+       <div class="text" data-translate>
           <p>Vidya Lakshmi</p>
             
         </div>
@@ -148,7 +141,7 @@
       <img src="/static/images/pragathi.png" >
       
        
-       <div class="text">
+       <div class="text" data-translate>
           <p>Pragathi and Saksham</p>
             
         </div>
@@ -163,7 +156,7 @@
           <img src="/static/images/innovation.png" >
       
        
-       <div class="text">
+       <div class="text" data-translate>
           <p>India Innovation Initiative</p>
             
         </div>
@@ -173,7 +166,7 @@
           <img src="/static/images/women.png" >
       
        
-       <div class="text">
+       <div class="text" data-translate>
           <p>Women Empowerment</p>
             
         </div>
@@ -183,7 +176,7 @@
           <img src="/static/images/disabled.png" >
       
        
-       <div class="text">
+       <div class="text" data-translate>
           <p>Facilities for Differently Abled</p>
             
         </div>
@@ -193,7 +186,7 @@
           <img src="/static/images/Research.png" >
       
        
-       <div class="text">
+       <div class="text" data-translate>
           <p>Reasearch Funds</p>
             
         </div>
@@ -205,7 +198,7 @@
     </div>
   
   <main>
-    <h1 class="faq-heading" style="text-align: center;">Frequently Asked Questions</h1>
+    <h1 class="faq-heading" style="text-align: center; data-translate">Frequently Asked Questions</h1>
     <section class="faq-container">
         <div class="faq-one">
           <!-- faq question -->
@@ -316,8 +309,8 @@
       <!-- Your chatbox content goes here -->
       <p>User: Hello! I'm IBot.</p>
       <div class="input-container">
-        <input type="text" placeholder="Type your message" />
-        <button onclick="sendMessage()">
+        <input id="chatbot-input" type="text" placeholder="Type your message" />
+        <button id="chatbot_upload" onclick="sendMessage()">
           <i class="fas fa-paper-plane"></i>
         </button>
         <div class="loading-dots"></div>
