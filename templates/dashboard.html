@@ -3,28 +3,240 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Boxicons -->
+    <link
+      href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- My CSS -->
+    <link rel="stylesheet" href="/static/css/dashboard.css" />
+    <link rel="title icon" href="/static/images/head.png" type="image/png" />
+    <title>Dashboard</title>
   </head>
   <body>
-    <div class="sidebar">
-      <div class="logo">
-        <img src="logo.png" alt="Logo" />
-      </div>
-      <ul class="nav">
-        <li><a href="#">Dashboard</a></li>
-        <li><a href="#">Institutions</a></li>
-        <li><a href="#">Reports</a></li>
-        <li><a href="#">Settings</a></li>
-        <li><a href="#">Logout</a></li>
+    <!-- SIDEBAR -->
+    <section id="sidebar">
+      <a href="/templates/profile.html" class="brand">
+        <i class="bx bxs-user-circle"></i>
+        <span class="text">Welcome ! </span>
+      </a>
+      <ul class="side-menu top">
+        <li class="active">
+          <a href="#">
+            <i class="bx bxs-dashboard"></i>
+            <span class="text">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="/templates/vishaya.html">
+            <i class="bx bx-bot"></i>
+            <span class="text">Vishaya</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bxs-doughnut-chart"></i>
+            <span class="text">Analytics</span>
+          </a>
+        </li>
+        <li>
+          <a href="/templates/trialcheck.html">
+            <i class="bx bxs-file-pdf"></i>
+            <span class="text">Trial Check</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bxs-file-archive"></i>
+            <span class="text">Document</span>
+          </a>
+        </li>
       </ul>
-    </div>
+      <ul class="side-menu">
+        <li>
+          <a href="/templates/settings.html">
+            <i class="bx bxs-cog"></i>
+            <span class="text">Settings</span>
+          </a>
+        </li>
+        <li>
+          <a href="/templates/index.html" class="logout">
+            <i class="bx bxs-log-out-circle"></i>
+            <span class="text">Logout</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+    <!-- SIDEBAR -->
 
-    <div class="content">
-      <h1>Welcome to the Admin Dashboard</h1>
-      <!-- Your content goes here -->
-    </div>
+    <!-- CONTENT -->
+    <section id="content">
+      <!-- NAVBAR -->
+      <nav>
+        <i class="bx bx-menu"></i>
+        <a href="#" class="nav-link">Categories</a>
+        <form action="#">
+          <div class="form-input">
+            <input type="search" placeholder="Search..." />
+            <button type="submit" class="search-btn">
+              <i class="bx bx-search"></i>
+            </button>
+          </div>
+        </form>
+        <input type="checkbox" id="switch-mode" hidden />
+        <label for="switch-mode" class="switch-mode"></label>
+        <a href="#" class="notification">
+          <i class="bx bxs-bell"></i>
+          <span class="num">3</span>
+        </a>
 
-    <script src="script.js"></script>
+        <a href="#" class="profile">
+          <img src="/static/images/head.png" />
+        </a>
+      </nav>
+      <!-- NAVBAR -->
+
+      <!-- MAIN -->
+      <main>
+        <div class="head-title">
+          <div class="left">
+            <h1>Dashboard</h1>
+            <ul class="breadcrumb">
+              <li>
+                <a href="#">Dashboard</a>
+              </li>
+              <li><i class="bx bx-chevron-right"></i></li>
+              <li>
+                <a class="active" href="#">Home</a>
+              </li>
+            </ul>
+          </div>
+          <a href="#" class="btn-download">
+            <i class="bx bxs-cloud-download"></i>
+            <span class="text">Download PDF</span>
+          </a>
+        </div>
+
+        <ul class="box-info">
+          <li>
+            <i class="bx bxs-calendar-check"></i>
+            <span class="text">
+              <h3>3000+</h3>
+              <p>Students</p>
+            </span>
+          </li>
+          <li>
+            <i class="bx bxs-group"></i>
+            <span class="text">
+              <h3>365</h3>
+              <p>Faculties</p>
+            </span>
+          </li>
+          <li>
+            <i class="bx bxs-graduation"></i>
+            <span class="text">
+              <h3>6</h3>
+              <p>Total Courses</p>
+            </span>
+          </li>
+        </ul>
+
+        <div class="table-data">
+          <div class="order">
+            <div class="head">
+              <h3>Uploads</h3>
+              <i class="bx bx-search"></i>
+              <i class="bx bx-filter"></i>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Sl no</th>
+                  <th>Due date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <h5>1</h5>
+                    <p>Doc 0</p>
+                  </td>
+                  <td>01-10-2021</td>
+                  <td><span class="status completed">Completed</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <h5>2</h5>
+                    <p>Doc 1</p>
+                  </td>
+                  <td>01-10-2021</td>
+                  <td><span class="status pending">Pending</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <h5>3</h5>
+                    <p>Doc 2</p>
+                  </td>
+                  <td>01-10-2021</td>
+                  <td><span class="status process">Process</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <h5>4</h5>
+                    <p>Doc 3</p>
+                  </td>
+                  <td>01-10-2021</td>
+                  <td><span class="status pending">Pending</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <h5>5</h5>
+                    <p>Doc 4</p>
+                  </td>
+                  <td>01-10-2021</td>
+                  <td><span class="status completed">Completed</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="todo">
+            <div class="head">
+              <h3>Todos</h3>
+              <i class="bx bx-plus"></i>
+              <i class="bx bx-filter"></i>
+            </div>
+            <ul class="todo-list">
+              <li class="completed">
+                <p>Todo List</p>
+                <i class="bx bx-dots-vertical-rounded"></i>
+              </li>
+              <li class="completed">
+                <p>Todo List</p>
+                <i class="bx bx-dots-vertical-rounded"></i>
+              </li>
+              <li class="not-completed">
+                <p>Todo List</p>
+                <i class="bx bx-dots-vertical-rounded"></i>
+              </li>
+              <li class="completed">
+                <p>Todo List</p>
+                <i class="bx bx-dots-vertical-rounded"></i>
+              </li>
+              <li class="not-completed">
+                <p>Todo List</p>
+                <i class="bx bx-dots-vertical-rounded"></i>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </main>
+      <!-- MAIN -->
+    </section>
+    <!-- CONTENT -->
+
+    <script src="/static/js/dashboard.js"></script>
   </body>
 </html>
