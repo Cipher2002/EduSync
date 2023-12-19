@@ -8,14 +8,14 @@ mongodb_client = PyMongo(app)
 db = mongodb_client.db
 #  mongodb = riKXPIASClOaF7sm
 translate_api_url = "https://6774-34-125-72-125.ngrok-free.app/"
-cahtbot_api_url = 
+cahtbot_api_url = None
 
 @app.route('/')
 def index():
     return render_template('index.html')
 
 @app.route('/translate', methods=['POST'])
-def translate():
+def translate():    
     data = request.get_json()
     texts = data.get('texts', [])
     target_lang = data.get('target_lang', 'en')

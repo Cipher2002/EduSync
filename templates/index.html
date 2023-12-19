@@ -15,6 +15,10 @@
     <link rel="title icon" href="/static/images/head.png" type="image/png" />
   </head>
   <body>
+    <div id="logo-container">
+      <img id="load" src="/static/images/loader.jpg" alt="Logo" style="width: 350px; height: 300px">
+    </div>
+    <div id="content">
     <header>
       <div>
         <img
@@ -25,10 +29,17 @@
         />
       </div>
       <div>
+<<<<<<< HEAD
+        <img 
+          src="/static/images/emblem.png"
+         id="emblem"
+          style="width: 90px; height: 90px"
+=======
         <img
           src="/static/images/download.png"
           id="emblem"
           style="width: 170px; height: 80px"
+>>>>>>> fa1def8396de5248b3dbbe80880ac3caac0d3aad
         />
       </div>
       <div id="buttons">
@@ -40,6 +51,7 @@
         <a class="register-button" href="{{ url_for('register') }}" data-translate>Register</a>
       </div>
     </header>
+    
     <section id="nav">
       <div id="nav-links">
         <span id="spanDate"></span>
@@ -49,12 +61,7 @@
       </div>
 
       <div id="about-link">
-        <select
-          id="language-select"
-          class="nav-link"
-          name="languages"
-          style="background-color: #1e2257; color: white"
-        >
+        <select id="language-select" class="nav-link" name="languages" style="background-color: #1e2257; color: white">
           <option value="en">English</option>
           <option value="as">Assamese</option>
           <option value="hi">Hindi</option>
@@ -68,151 +75,138 @@
           <option value="ta">Tamil</option>
           <option value="te">Telugu</option>
         </select>
-        <!-- 
-        <div class="flag">
-          <img src="/static/images/flag.jpg" />
-        </div> -->
         <a href="#" class="nav-link" data-translate>Home</a>
         <a href="#" class="nav-link" data-translate>Courses</a>
-        <a href="https://www.aicte-india.org/bulletins" class="nav-link" data-translate
-          >News</a
-        >
-        <!-- <a
-          href="https://www.aicte-india.org/opportunities/students/overview"
-          class="nav-link"
-          >Opppurtunities</a
-        > -->
+        <a href="https://www.aicte-india.org/bulletins" class="nav-link" data-translate>News</a>
         <a href="#" class="nav-link" data-translate>Fee</a>
-        <a href="https://www.aicte-india.org/about-us/history" class="nav-link" data-translate
-          >About</a
-        >
+        <a href="https://www.aicte-india.org/about-us/history" class="nav-link" data-translate>About</a>
       </div>
     </section>
     <div class="carousel">
       <div class="carousel-inner">
-        <div class="carousel-item">
-          <img
-            src="/static/images/aicte.jpg"
-            style="width: 100%; height: 100%"
-            alt="Slide 1"
-          />
-        </div>
-        <div class="carousel-item">
-          <img src="/static/images/carousel.jpg" alt="Slide 2" />
-        </div>
-        <div class="carousel-item">
-          <img src="/static/images/main_content.png" alt="Slide 3" />
-        </div>
+          <div class="carousel-item">
+              <img src="/static/images/aicte.jpg" style="width: 100%;height:100%;" alt="Slide 1">
+          </div>
+          <div class="carousel-item">
+              <img src="/static/images/main_content.png" alt="Slide 2">
+          </div>
+          <div class="carousel-item">
+              <img src="/static/images/carousel.jpg" alt="Slide 3">
+          </div>
       </div>
+  </div>
+  <br><br><br><br>
+  <div class="main">
+    <div class="container">
+  
+  
+    
+    <div class="glass-card">
+      
+
+      
+       <img src="/static/images/pmsc.png" >
+      
+       
+       <div class="text">
+          <p>Prime Minister's Special Scholarship Scheme(PMSS)</p>
+            
+        </div>
+        
     </div>
-    <div class="wrapper">
-      <div class="cards">
-        <div class="card [ is-collapsed ]">
-          <div class="card__inner [ js-expander ]">
-            <span data-translate>Online Application</span>
-            <i class="fa fa-folder-o"></i>
-          </div>
-          <div class="card__expander">
-            <i class="fa fa-close [ js-collapser ]" data-translate></i>
-            Expander
-          </div>
-        </div>
-
-        <div class="card [ is-collapsed ]">
-          <div class="card__inner [ js-expander ]">
-            <span data-translate>Recommendations</span>
-            <i class="fa fa-folder-o"></i>
-          </div>
-          <div class="card__expander" data-translate>
-            <i class="fa fa-close [ js-collapser ]"></i>
-            Expander
-          </div>
-        </div>
-
-        <div class="card [ is-collapsed ]">
-          <div class="card__inner [ js-expander ]">
-            <span data-translate>Rescrutiny</span>
-            <i class="fa fa-folder-o"></i>
-          </div>
-          <div class="card__expander" data-translate>
-            <i class="fa fa-close [ js-collapser ]"></i>
-            Expander
-          </div>
-        </div>
-
-        <div class="card [ is-collapsed ]">
-          <div class="card__inner [ js-expander ]">
-            <span data-translate>Regional Commitee</span>
-            <i class="fa fa-folder-o"></i>
-          </div>
-          <div class="card__expander" data-translate>
-            <i class="fa fa-close [ js-collapser ]"></i>
-            Expander
-          </div>
-        </div>
-
-        <div class="card [ is-collapsed ]">
-          <div class="card__inner [ js-expander ]">
-            <span data-translate>Executive Commitee</span>
-            <i class="fa fa-folder-o"></i>
-          </div>
-          <div class="card__expander" data-translate>
-            <i class="fa fa-close [ js-collapser ]"></i>
-            Expander
-          </div>
-        </div>
-
-        <div class="card [ is-collapsed ]">
-          <div class="card__inner [ js-expander ]">
-            <span data-translate>LOA</span>
-            <i class="fa fa-folder-o"></i>
-          </div>
-          <div class="card__expander" data-translate>
-            <i class="fa fa-close [ js-collapser ]"></i>
-            Expander
-          </div>
-        </div>
-
-        <div class="card [ is-collapsed ]">
-          <div class="card__inner [ js-expander ]">
-            <span data-translate>LOR</span>
-            <i class="fa fa-folder-o"></i>
-          </div>
-          <div class="card__expander" data-translate>
-            <i class="fa fa-close [ js-collapser ]"></i>
-            Expander
-          </div>
-        </div>
-
-        <div class="card [ is-collapsed ]">
-          <div class="card__inner [ js-expander ]">
-            <span data-translate>SAC</span>
-            <i class="fa fa-folder-o"></i>
-          </div>
-          <div class="card__expander" data-translate>
-            <i class="fa fa-close [ js-collapser ]"></i>
-            Expander
-          </div>
-        </div>
-
-        <div class="card [ is-collapsed ]">
-          <div class="card__inner [ js-expander ]">
-            <span data-translate>Validity</span>
-            <i class="fa fa-folder-o"></i>
-          </div>
-          <div class="card__expander" data-translate>
-            <i class="fa fa-close [ js-collapser ]"></i>
-            Expander
-          </div>
-        </div>
-      </div>
+    <div class="glass-card">
+      <img src="/static/images/rural.png" >
+      
+       
+      <div class="text">
+         <p>Unnat Bharat Abhiyan in rural development process</p>
+           
+       </div>
+        
     </div>
-
-    <main>
-      <h1 class="faq-heading" style="text-align: center" data-translate>
-        Frequently Asked Questions
-      </h1>
-      <section class="faq-container">
+    <div class="glass-card">
+      <img src="/static/images/scholarship.png" >
+      
+       
+       <div class="text">
+          <p>National <br>E-Scholarship</p>
+            
+        </div>
+        
+    </div>
+    <div class="glass-card">
+      <img src="/static/images/vidya.png" >
+      
+       
+       <div class="text">
+          <p>Vidya Lakshmi</p>
+            
+        </div>
+        
+    </div>
+    <div class="glass-card">
+      <img src="/static/images/pragathi.png" >
+      
+       
+       <div class="text">
+          <p>Pragathi and Saksham</p>
+            
+        </div>
+        
+    </div>
+    
+    </div>
+    <div class="container1">
+    
+    
+        <div class="glass-card">
+          <img src="/static/images/innovation.png" >
+      
+       
+       <div class="text">
+          <p>India Innovation Initiative</p>
+            
+        </div>
+            
+        </div>
+        <div class="glass-card">
+          <img src="/static/images/women.png" >
+      
+       
+       <div class="text">
+          <p>Women Empowerment</p>
+            
+        </div>
+            
+        </div>
+        <div class="glass-card">
+          <img src="/static/images/disabled.png" >
+      
+       
+       <div class="text">
+          <p>Facilities for Differently Abled</p>
+            
+        </div>
+            
+        </div>
+        <div class="glass-card">
+          <img src="/static/images/Research.png" >
+      
+       
+       <div class="text">
+          <p>Reasearch Funds</p>
+            
+        </div>
+        
+        </div>
+        
+        
+        </div>
+    </div>
+  
+  <main>
+    <h1 class="faq-heading" style="text-align: center;">Frequently Asked Questions</h1>
+    <section class="faq-container">
         <div class="faq-one">
           <!-- faq question -->
           <h1 class="faq-page" data-translate>
@@ -395,6 +389,7 @@
         </div>
       </div>
     </footer>
+  </div>
     <script src="/static/js/index.js"></script>
   </body>
 </html>

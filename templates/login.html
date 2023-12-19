@@ -52,7 +52,20 @@
 
           <div class="remember-forgot">
             <a href="{{ url_for('register') }}">New Institute ?</a><span> | </span>
-            <a href="{{ url_for('change') }}">Change password</a>
+            <a href="#" id='popup-link'>Change password</a>
+          </div>
+
+          <div id="popup-window">
+            <h1>OTP Using JavaScript</h1>
+            <div class="form">
+              <input type="email" id="popup-email" placeholder="Enter Email" />
+              <div class="otpverify">
+                <input type="text" id="otp_inp" placeholder="Enter the OTP"/>
+                <button class="btn" id="otp-btn">Verify</button>
+              </div>
+              <button onclick="sendOTP()" class="btn">Send OTP</button>
+            </div>
+            <button id="close-button">Close</button>
           </div>
 
           <button id="login-button" class="login-btn">Log In</button>

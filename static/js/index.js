@@ -1,3 +1,21 @@
+
+window.addEventListener('load', function () {
+  // Display the logo at its normal size
+  var logo = document.getElementById('load');
+  logo.style.transform = 'scale(1)';
+  document.getElementById('content').style.opacity = '0.3';
+  
+  // After a delay, slowly zoom in the logo
+  setTimeout(function () {
+    logo.style.transform = 'scale(1.5)';
+  }, 1000); // Adjust the delay as needed
+  // After the zoom-in transition is complete, hide loading logo and display content
+  logo.addEventListener('transitionend', function () {
+    document.getElementById('logo-container').style.opacity = '0';
+    document.getElementById('content').style.opacity = '1';
+  });
+});
+
 var faq = document.getElementsByClassName("faq-page");
 var i;
 for (i = 0; i < faq.length; i++) {
@@ -148,6 +166,7 @@ function translateAllElements() {
     if (selectedLanguage === 'en') {
       window.location.reload()
     }
+    sessionStorage.setItem('targetedLanguage', selectedLanguage);
     fetch('/translate', {
         method: 'POST',
         headers: {
