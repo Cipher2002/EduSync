@@ -145,7 +145,9 @@ function collectInitialText() {
 // Function to translate all text elements
 function translateAllElements() {
     const selectedLanguage = document.getElementById('language-select').value;
-
+    if (selectedLanguage === 'en') {
+      window.location.reload()
+    }
     fetch('/translate', {
         method: 'POST',
         headers: {
