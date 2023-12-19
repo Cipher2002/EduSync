@@ -200,7 +200,7 @@ main {
   transition: 0.4s;
   margin: auto;
 }
-#about-link .flag {
+.flag {
   height: 30px;
   width: 50px;
   position: relative;
