@@ -14,11 +14,11 @@
       <div class="form">
         <div class="inputfield">
           <label>College name</label>
-          <input type="text" class="input" />
+          <input id="college-name" type="text" class="input" />
         </div>
         <div class="inputfield">
           <label>Institute type</label>
-          <input type="text" class="input" />
+          <input id="institute-type" type="text" class="input" />
         </div>
         <!-- <div class="inputfield">
           <label>Password</label>
@@ -31,8 +31,7 @@
         <div class="inputfield">
           <label>State</label>
           <div class="custom_select">
-            <select>
-              <option value="">Select</option>
+            <select id="state">
               <option value="">Select State</option>
               <option value="Andhra Pradesh">Andhra Pradesh</option>
               <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -67,31 +66,32 @@
         </div>
         <div class="inputfield">
           <label>Email Address</label>
-          <input type="text" class="input" />
+          <input id="email" type="text" class="input" />
         </div>
         <div class="inputfield">
           <label>Contact Number</label>
-          <input type="text" class="input" />
+          <input id="contact-number" type="text" class="input" />
         </div>
         <div class="inputfield">
           <label>Address</label>
-          <textarea class="textarea"></textarea>
+          <textarea id="college-address" class="textarea"></textarea>
         </div>
         <div class="inputfield">
           <label>Postal Code</label>
-          <input type="text" class="input" />
+          <input id="postal-code" type="text" class="input" />
         </div>
         <div class="inputfield terms">
           <label class="check">
-            <input type="checkbox" />
+            <input id="check-box" type="checkbox" />
             <span class="checkmark"></span>
           </label>
           <p>Agreed to terms and conditions</p>
         </div>
         <div class="inputfield">
-          <input type="submit" value="Register" class="btn" />
+          <button id="register-button" type="submit" value="Register" class="btn" >Register</button>
         </div>
       </div>
     </div>
+    <script type="module" src="/static/js/register.js"></script>
   </body>
 </html>

@@ -36,8 +36,8 @@
         <button class="text-button" onclick="increaseFontSize()">A+</button>
         <button class="text-button" onclick="resetFontSize()">A</button>
         <button class="text-button" onclick="decreaseFontSize()">A-</button>
-        <a href="/templates/login.html" class="login-button">Login</a>
-        <a class="register-button" href="/templates/register.html">
+        <a href="{{ url_for('login') }}" class="login-button">Login</a>
+        <a class="register-button" href="{{ url_for('register') }}">
           Register
         </a>
       </div>
