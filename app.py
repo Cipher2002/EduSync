@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, redirect
 import requests
 from flask_pymongo import PyMongo
 
@@ -7,8 +7,7 @@ app.config["MONGO_URI"] = "mongodb+srv://Cipher:riKXPIASClOaF7sm@cluster0.iqltod
 mongodb_client = PyMongo(app)
 db = mongodb_client.db
 #  mongodb = riKXPIASClOaF7sm
-mongo = PyMongo(app)
-colab_api_url = "https://a01c-34-147-10-113.ngrok-free.app/"
+colab_api_url = "https://3908-34-125-72-125.ngrok-free.app/"
 
 @app.route('/')
 def index():
@@ -16,6 +15,7 @@ def index():
 
 @app.route('/translate', methods=['POST'])
 def translate():
+    
     # def translate():
     # data = request.get_json()
     # texts = data.get('texts', [])
@@ -43,10 +43,29 @@ def register():
 def login():
     return render_template('login.html')
 
-@app.route('/forgot', methods=['GET', 'POST'])
-def forgot():
-    return render_template('forgot.html')
+@app.route('/change', methods=['GET', 'POST'])
+def change():
+    return render_template('changep.html')
 
+@app.route('/dashboard', methods=['GET', 'POST'])
+def dashboard():
+    return render_template('dashboard.html')
+
+@app.route('/login-data', methods=['POST'])
+def login_data():
+    try:
+        email = request.json.get('username')
+        password = request.json.get('password')
+        user = db.institutes.find_one({"email": email, "password": password})
+        if user:
+            return jsonify({'message': 'Success'}), 200
+        else:
+            return jsonify({'message': 'Failed'}), 401
+        
+    except Exception as e:
+        print("Error:", e)
+        return jsonify({'error': str(e)})
+    
 @app.route('/register-data', methods=['POST'])
 def register_data():
     try:
@@ -58,6 +77,7 @@ def register_data():
             contactNumber = request.json.get('contactNumber')
             collegeAddress = request.json.get('collegeAddress')
             postalCode = request.json.get('postalCode')
+            password = request.json.get('password')
             checkbox = request.json.get('checkbox', False)
 
             db.institutes.insert_one({
@@ -68,12 +88,13 @@ def register_data():
                 'contactNumber': contactNumber,
                 'collegeAddress': collegeAddress,
                 'postalCode': postalCode,
+                'password': password,
                 'checkbox': checkbox,
             })
 
-            return jsonify({'message': 'success'})
+            return jsonify({'message': 'success'}), 200
         else:
-            return jsonify({'error': 'Invalid request method'})
+            return jsonify({'error': 'Invalid request method'}), 401
     except Exception as e:
         print("Error:", e)
         return jsonify({'error': str(e)})

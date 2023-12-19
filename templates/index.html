@@ -32,14 +32,12 @@
         />
       </div>
       <div id="buttons">
-        <span id="text-size">Text Size</span>
+        <span id="text-size" data-translate>Text Size</span>
         <button class="text-button" onclick="increaseFontSize()">A+</button>
         <button class="text-button" onclick="resetFontSize()">A</button>
         <button class="text-button" onclick="decreaseFontSize()">A-</button>
-        <a href="{{ url_for('login') }}" class="login-button">Login</a>
-        <a class="register-button" href="{{ url_for('register') }}">
-          Register
-        </a>
+        <a href="{{ url_for('login') }}" class="login-button" data-translate>Login</a>
+        <a class="register-button" href="{{ url_for('register') }}" data-translate>Register</a>
       </div>
     </header>
     <section id="nav">
@@ -52,6 +50,7 @@
 
       <div id="about-link">
         <select
+          id="language-select"
           class="nav-link"
           name="languages"
           style="background-color: #1e2257; color: white"
