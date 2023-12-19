@@ -7,7 +7,8 @@ app.config["MONGO_URI"] = "mongodb+srv://Cipher:riKXPIASClOaF7sm@cluster0.iqltod
 mongodb_client = PyMongo(app)
 db = mongodb_client.db
 #  mongodb = riKXPIASClOaF7sm
-colab_api_url = "https://3908-34-125-72-125.ngrok-free.app/"
+translate_api_url = "https://6774-34-125-72-125.ngrok-free.app/"
+cahtbot_api_url = 
 
 @app.route('/')
 def index():
@@ -15,20 +16,10 @@ def index():
 
 @app.route('/translate', methods=['POST'])
 def translate():
-    
-    # def translate():
-    # data = request.get_json()
-    # texts = data.get('texts', [])
-    # target_lang = data.get('target_lang', 'en')
-    # translated_texts = indic2en_Model.batch_translate(texts, 'en', target_lang)
-    # return jsonify({'translated_texts': translated_texts})
-
     data = request.get_json()
     texts = data.get('texts', [])
     target_lang = data.get('target_lang', 'en')
-    print("texts:", texts)
-    print("target_lang:", target_lang)
-    response = requests.post(f"{colab_api_url}/translate", json={'texts': texts, 'target_lang': target_lang})
+    response = requests.post(f"{translate_api_url}/translate", json={'texts': texts, 'target_lang': target_lang})
     if response.status_code == 200:
         translated_texts = response.json().get('translated_texts', [])
         return jsonify({'translated_texts': translated_texts})
