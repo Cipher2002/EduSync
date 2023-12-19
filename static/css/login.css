@@ -34,7 +34,13 @@ body {
   background-color: #f5f9ff;
   display: flex;
   justify-content: center;
+  /* background: url(/static/images/lg-bg.jpg);
+  background-repeat: no-repeat;
+  height: 100%;
+  background-size: center;
+  background-size: cover; */
 }
+
 .infographics {
   position: fixed;
   top: 0;
@@ -62,7 +68,7 @@ body {
 }
 
 .content-container {
-  background-color: hsla(0, 0%, 100%, 0.3);
+  /* background-color: #bd850434; */
   backdrop-filter: blur(30px);
   padding: 2rem;
   width: 80%;
@@ -75,6 +81,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 .content-container h1 {
   font-weight: 600;
   font-size: 2.5rem;
