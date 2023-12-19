@@ -172,33 +172,17 @@ footer {
 main {
   background-image: url(/static/images/bg.png);
   background-repeat: no-repeat;
- 
-  background-size: 1520px;
-  margin-right: 5rem;
-  margin-left: 5rem;
+  background-size: 1700px;
 }
 .faq-heading {
   border-bottom: #777;
   padding: 20px 60px;
-  color: #000;
 }
 .faq-container {
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
-.curve{
- 
-  margin-top: 5rem;
-  border-radius: 25px;
-  /* background: rgba(188, 194, 197, 0.159);
-box-shadow: 0 8px 32px 0 rgba(166, 166, 167, 0.629);
-backdrop-filter: blur( 3px );
--webkit-backdrop-filter: blur( 3px );
-border-radius: 10px;
-border: 1px solid rgba( 255, 255, 255, 0.18 ); */
-}
-
 .hr-line {
   width: 60%;
   margin: auto;
@@ -206,7 +190,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 ); */
 /* Style the buttons that are used to open and close the faq-page body */
 .faq-page {
   /* background-color: #eee; */
-  color: #bd8704;
+  color: #1e2257;
   cursor: pointer;
   padding: 30px 20px;
   width: 60%;
@@ -215,71 +199,41 @@ border: 1px solid rgba( 255, 255, 255, 0.18 ); */
   outline: none;
   transition: 0.4s;
   margin: auto;
-  transition: display 0.5s ease; 
 }
 .flag {
   height: 30px;
   width: 50px;
   position: relative;
 }
-
 .faq-body {
   margin: auto;
   /* text-align: center; */
-  width: 60%;
-  padding:10px;
-  max-height: 300px;
-  overflow-y: auto;
-  font-size: medium;
-  display: none;
-  transition: display 0.5s ease; 
+  width: 50%;
+  padding: auto;
 }
-
-
-
-.faq-one:hover .faq-body {
-  display: block; /* Show faq-body when hovering on faq-five */
-}
-.faq-two:hover .faq-body {
-  display: block; /* Show faq-body when hovering on faq-five */
-}
-.faq-three:hover .faq-body {
-  display: block; /* Show faq-body when hovering on faq-five */
-}
-.faq-four:hover .faq-body {
-  display: block; /* Show faq-body when hovering on faq-five */
-}
-.faq-five:hover .faq-body {
-  display: block; /* Show faq-body when hovering on faq-five */
-}
-
-
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active,
 .faq-page:hover {
   background-color: #dbf1f7;
-  background: rgba( 255, 255, 255, 0 );
-box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-backdrop-filter: blur( 2px );
--webkit-backdrop-filter: blur( 2px );
-border-radius: 10px;
-border: 1px solid rgba( 255, 255, 255, 0.18 );
-transform: scale(1.2);
-transition: background-color .6s ease;
 }
 /* Style the faq-page panel. Note: hidden by default */
+.faq-body {
+  padding: 0 18px;
+  font-size: medium;
 
+  display: none;
+  overflow: hidden;
+}
 .faq-page:after {
   content: "\02795";
   /* Unicode character for "plus" sign (+) */
   font-size: 13px;
-  color: #bd8704;
+  color: #777;
   float: right;
   margin-left: 5px;
 }
 .active:after {
   content: "\2796";
-  color: #bd8704;
   /* Unicode character for "minus" sign (-) */
 }
 
@@ -290,19 +244,18 @@ transition: background-color .6s ease;
     align-items: center;
     justify-content: center;
     padding: 20px;
-    
 }
 .main
 {
     max-width: 1500px;
 }
 .container
-{   margin-left: 3cqi;
+{
     display: flex;
-    grid-gap: 25px;
+    grid-gap: 15px;
 }
 .container1
-{ grid-gap: 35px;
+{ grid-gap: 25px;
     display: flex;
     margin-top: 30px;
     margin-left: 7cqi;
@@ -312,7 +265,7 @@ transition: background-color .6s ease;
     width: 300px;
     height: 200px;
    
-    border-radius: 20px;
+    border-radius: 64px;
     background:  #f89544;
     box-shadow:  10px 10px 40px #04072c,
                  -10px -10px 40px #04072c;
@@ -332,13 +285,8 @@ transition: background-color .6s ease;
 
 .glass-card p {
     margin: 10px 0 0;
-    color: black;
+    color: #ddd;
     font-size: 1rem;
-}
-.vl {
-  margin-top: 19px;
-  border-left: 2px solid black;
-  height: 155px;
 }
 /* Chatbox Styles */
 .chatbox {
@@ -451,7 +399,6 @@ transition: background-color .6s ease;
   opacity: 1;
   transition: opacity 1s ease-in-out;
   z-index: -1;
-  margin: 0 0 0 0;
 }
 
 #load {
@@ -463,44 +410,6 @@ transition: background-color .6s ease;
 #content {
   opacity: 0;
   transition: opacity 1s ease-in-out;
-}
-.card .text {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  
-}
-.inst
-{
-  max-width: 1500px;
-  margin-right: 0;
-}
-.containers
-{   margin-left: 5rem;
-  margin-top: 30px;
-  display: flex;
-  grid-gap: 25px;
-  margin-left: 7rem;
-}
-
-
-.card {
-  width: 300px;
-  height: 200px;
- 
-  border-radius: 20px;
-  background:  #f89544;
-  box-shadow:  10px 10px 40px #04072c,
-               -10px -10px 40px #04072c;
-  display: flex;
-  grid-row: auto;
-  flex-direction: row;
-  /* margin-left: 10px; */
-  /* align-items: center;
-  justify-content: center; */
 }
 
 
