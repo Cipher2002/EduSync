@@ -250,15 +250,6 @@ margin: auto;
   /* Unicode character for "minus" sign (-) */
 }
 
-
-.glass-card .image
-{   width: auto;
-   
-    height: 50px;
-    background-color: white;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-}
 .glass-card .text {
     flex: 1;
     display: flex;
