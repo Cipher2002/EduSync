@@ -173,10 +173,9 @@ function collectInitialText() {
 function translateAllElements() {
     const selectedLanguage = document.getElementById('language-select').value;
     localStorage.setItem('targetedLanguage', selectedLanguage);
-    if (selectedLanguage === 'en') {
+    if (selectedLanguage == 'en') {
       window.location.reload()
     }
-    sessionStorage.setItem('targetedLanguage', selectedLanguage);
     fetch('/translate', {
         method: 'POST',
         headers: {

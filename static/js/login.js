@@ -1,4 +1,3 @@
-
 if (localStorage.getItem('targetedLanguage') != 'en') {
 
   let originalEnglishText = [];

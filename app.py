@@ -7,7 +7,7 @@ app.config["MONGO_URI"] = "mongodb+srv://Cipher:riKXPIASClOaF7sm@cluster0.iqltod
 mongodb_client = PyMongo(app)
 db = mongodb_client.db
 #  mongodb = riKXPIASClOaF7sm
-translate_api_url = "http://6b84-34-16-131-158.ngrok-free.app/"
+translate_api_url = "https://2729-34-42-196-26.ngrok-free.app/"
 chatbot_api_url = "http://cc7c-34-69-59-197.ngrok-free.app/"
 
 @app.route('/')
