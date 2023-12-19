@@ -250,280 +250,66 @@ margin: auto;
   /* Unicode character for "minus" sign (-) */
 }
 
-.card {
-    width: 10.33%;
-    /* Adjust the width and margin as needed */
-    margin: 10px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 20px;
-  }
-  .ag-format-container {
-  width: 1142px;
-  margin: 0 auto;
+
+.glass-card .image
+{   width: auto;
+   
+    height: 50px;
+    background-color: white;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
 }
-
-
-
-.ag-courses_box {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: start;
-  -ms-flex-align: start;
-  align-items: flex-start;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  
-
-  padding: 50px 0;
-}
-.ag-courses_item {
-  -ms-flex-preferred-size: calc(33.33333% - 30px);
-  flex-basis: calc(33.33333% - 30px);
-
-  margin: 0 15px 30px;
-
-  overflow: hidden;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-  
-
-  border-radius: 28px;
-}
-.ag-courses-item_link {
-  display: block;
-  padding: 30px 20px;
-  background-color: #e0c8af;
-
-  overflow: hidden;
-
-  position: relative;
-}
-.ag-courses-item_link:hover,
-.ag-courses-item_link:hover .ag-courses-item_date {
-  text-decoration: none;
-  color: #FFF;
-}
-.ag-courses-item_link:hover .ag-courses-item_bg {
-  -webkit-transform: scale(10);
-  -ms-transform: scale(10);
-  transform: scale(10);
-}
-.ag-courses-item_title {
-  min-height: 87px;
-  margin: 0 0 25px;
-
-  overflow: hidden;
-
-  font-weight: bold;
-  font-size: 30px;
-  color: #FFF;
-
-  z-index: 2;
-  position: relative;
-}
-.ag-courses-item_date-box {
-  font-size: 18px;
-  color: #FFF;
-
-  z-index: 2;
-  position: relative;
-}
-.ag-courses-item_date {
-  font-weight: bold;
-  color: whitesmoke;
-
-  -webkit-transition: color .5s ease;
-  -o-transition: color .5s ease;
-  transition: color .5s ease
-}
-.ag-courses-item_bg {
-  height: 128px;
-  width: 128px;
-  background-color: #f9b234;
-
-  z-index: 1;
-  position: absolute;
-  top: -75px;
-  right: -75px;
-
-  border-radius: 50%;
-
-  -webkit-transition: all .5s ease;
-  -o-transition: all .5s ease;
-  transition: all .5s ease;
-}
-
-
-
-@media only screen and (max-width: 979px) {
-  .ag-courses_item {
-    -ms-flex-preferred-size: calc(50% - 30px);
-    flex-basis: calc(50% - 30px);
-  }
-  .ag-courses-item_title {
-    font-size: 24px;
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  .ag-format-container {
-    width: 96%;
-  }
-
-}
-@media only screen and (max-width: 639px) {
-  .ag-courses_item {
-    -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
-  }
-  .ag-courses-item_title {
-    min-height: 72px;
-    line-height: 1;
-
-    font-size: 24px;
-  }
-  .ag-courses-item_link {
-    padding: 22px 40px;
-  }
-  .ag-courses-item_date-box {
-    font-size: 16px;
-  }
-}
-.wrapper {
-    margin: 5em auto;
-    max-width: 1000px;
-    background-color:#1e2257
-  }
-  .cards {
-    padding: 15px;
+.glass-card .text {
+    flex: 1;
     display: flex;
-    flex-flow: row wrap;
-  }
-  
-  .card {
-    margin: 15px;
-    width: calc((100% / 3) - 30px);
-    transition: all 0.2s ease-in-out;
-  }
-  
-  @media screen and (max-width: 991px) {
-    .card {
-      width: calc((100% / 2) - 30px);
-    }
-  }
-  
-  @media screen and (max-width: 767px) {
-    .card {
-      width: 100%;
-    }
-  }
-  
-  .card:hover .card__inner {
-    background-color:#0d326e;
-    transform: scale(1.05);
-  }
-  
-  .card__inner {
-    width: 100%;
-    padding: 20px;
-    position: relative;
-    cursor: pointer;
-    background-color: #94b5d6;
-    color: #eceef1;
-    font-size: 1.5em;
-    text-transform: uppercase;
-    text-align: center;
-    transition: all 0.2s ease-in-out;
-  }
-  
-  .card__inner:after {
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .card .fa {
-    width: 100%;
-    margin-top: .25em;
-  }
-  
-  .card__expander {
-    transition: all 0.2s ease-in-out;
-    background-color: #1c2833;
-    width: 100%;
-    position: relative;
-    display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    text-transform: uppercase;
-    color:#ddd;
-    font-size: 1.5em;
-  }
-  
-  .card__expander .fa {
-    font-size: 0.75em;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-  }
-  
-  .card.is-collapsed .card__inner:after {
-    content: "";
-    opacity: 0;
-  }
-  
-  .card.is-collapsed .card__expander {
-    max-height: 0;
-    min-height: 0;
-    overflow: hidden;
-    margin-top: 0;
-    opacity: 0;
-  }
-  
-  .card.is-expanded .card__inner {
-    background-color: #1abc9c;
-  }
-  
-  .card.is-expanded .card__inner:after {
-    content: "";
-    opacity: 1;
-    display: block;
-    height: 0;
-    width: 0;
-    position: absolute;
-    bottom: -30px;
-    left: calc(50% - 15px);
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-    border-bottom: 15px solid #333a45;
-  }
-  
-  .card.is-expanded .fa:before {
-    content: "\f115";
-  }
-  
-  .card.is-expanded .card__expander {
-    max-height: 1000px;
-    min-height: 200px;
-    overflow: visible;
+    justify-content: center;
+    padding: 20px;
+}
+.main
+{
+    max-width: 1500px;
+}
+.container
+{
+    display: flex;
+    grid-gap: 15px;
+}
+.container1
+{ grid-gap: 25px;
+    display: flex;
     margin-top: 30px;
-    opacity: 1;
-  }
-  
-  .card.is-expanded:hover .card__inner {
-    transform: scale(1);
-  }
-  
-  .card.is-inactive .card__inner {
-    pointer-events: none;
-    opacity: 0.5;
-  }
-  
-  .card.is-inactive:hover .card__inner {
-    background-color: #2c3e50;
-    transform: scale(1);
-  }
+    margin-left: 7cqi;
+}
+
+.glass-card {
+    width: 300px;
+    height: 200px;
+   
+    border-radius: 64px;
+    background:  #f89544;
+    box-shadow:  10px 10px 40px #04072c,
+                 -10px -10px 40px #04072c;
+    display: flex;
+    grid-row: auto;
+    flex-direction: row;
+    /* margin-left: 10px; */
+    /* align-items: center;
+    justify-content: center; */
+}
+
+.glass-card h2 {
+    margin: 0;
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.glass-card p {
+    margin: 10px 0 0;
+    color: #ddd;
+    font-size: 1rem;
+}
 /* Chatbox Styles */
 .chatbox {
   display: none;
@@ -622,7 +408,32 @@ margin: auto;
   }
 }
 
+#logo-container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #fff; /* Set background color as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+  z-index: -1;
+}
 
+#load {
+  width: 50%; /* Adjust the size of the logo */
+  height: auto;
+  transition: transform 1s ease-in-out; /* Adjust the transition duration */
+}
+
+#content {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
 
 
 
