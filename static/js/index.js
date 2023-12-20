@@ -1,19 +1,20 @@
 localStorage.setItem('targetedLanguage', 'en');
 
-window.addEventListener('load', function () {
-  var logo = document.getElementById('load');
-  logo.style.transform = 'scale(1)';
-  document.getElementById('content').style.opacity = '0.3';
+// window.addEventListener('load', function () {
+//   var logo = document.getElementById('load');
+//   logo.style.transform = 'scale(1)';
+//   document.getElementById('content').style.opacity = '0.3';
   
 
-  setTimeout(function () {
-    logo.style.transform = 'scale(1.5)';
-  }, 1000);
-  logo.addEventListener('transitionend', function () {
-    document.getElementById('logo-container').style.opacity = '0';
-    document.getElementById('content').style.opacity = '1';
-  });
-});
+//   setTimeout(function () {
+//     logo.style.transform = 'scale(1.5)';
+//   }, 1000);
+//   logo.addEventListener('transitionend', function () {
+//     document.getElementById('logo-container').style.opacity = '0';
+//     document.getElementById('content').style.opacity = '1';
+//   });
+// });
+
 
 var faq = document.getElementsByClassName("faq-page");
 var i;
@@ -89,107 +90,20 @@ function updateClock() {
 
   document.getElementById("spanTime").innerHTML = currentTime;
 }
-
-// Update the time every second (1000 milliseconds)
 setInterval(updateClock, 1000);
 window.onbeforeunload = function () {
       window.scrollTo(0, 0);
 }
-function toggleChatbox() {
-  var chatbox = document.getElementById('chatbox');
-  var chatboyIcon = document.getElementById('chatboy-icon');
 
-  if (chatbox.style.display === 'none' || chatbox.style.display === '') {
-      // Show chatbox and hide chatboy icon
-      chatbox.style.display = 'block';
-      chatboyIcon.style.display = 'none';
-  } else {
-      // Hide chatbox and show chatboy icon
-      chatbox.style.display = 'none';
-      chatboyIcon.style.display = 'block';
-  }
-}
-
-function sendMessage() {
-  const inputField = document.getElementById('chatbot-input');
-const uploadButton = document.getElementById('chatbot_upload');
-
-// Add an event listener to the button to trigger the function
-uploadButton.addEventListener('click', handleUserInput);
-
-function handleUserInput() {
-    const input_data = inputField.value;
-    console.log(input_data);
-
-    // Make a POST request to the Flask app
-    fetch('/ask', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            question: input_data,
-        }),
-    })
-    .then(response => response.json())
-    .then(data => {
-        // Handle the answers
-        displayChatMessage('User', input_data);
-        displayChatMessage('Chatbot', data['answers']);
-        
-        // Clear the input field
-        inputField.value = '';
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-  }
-  var messageCounter = 1;
-  function displayChatMessage(sender, message) {
-    var chatboxContent = document.querySelector('.chatbox');
-    messageCounter++;
-    var messageHTML = `<p>${sender}: ${message}</p>`;
-    chatboxContent.insertAdjacentHTML('beforeend', messageHTML);
-    if (messageCounter === 2) {
-      createInputContainer();
-    }
-    chatboxContent.scrollTop = chatboxContent.scrollHeight;
-  }
-  function createInputContainer() {
-    var chatboxContent = document.querySelector('.chatbox');
-    var inputContainerHTML = `
-      <div class="input-container">
-        <input id="chatbot-input" type="text" placeholder="Type your message" />
-        <button id="chatbot_upload" onclick="sendMessage()">
-          <i class="fas fa-paper-plane"></i>
-        </button>
-        <div class="loading-dots"></div>
-      </div>
-    `;
-    chatboxContent.insertAdjacentHTML('beforeend', inputContainerHTML);
-  }
-  function editMessage() {
-    var chatboxContent = document.querySelector('.chatbox');
-    // Clear everything below the edited question
-    chatboxContent.innerHTML = chatboxContent.innerHTML.split('<p>').slice(0, 2).join('<p>');
-    // Recreate the input container
-    createInputContainer();
-    chatboxContent.scrollTop = chatboxContent.scrollHeight;
-  } 
-}
 
 let originalEnglishText = [];
 let translatedText = [];
-
-// Function to collect text from elements with data-translate attribute during initial page load
 function collectInitialText() {
     originalEnglishText = [];
     document.querySelectorAll('[data-translate]').forEach(element => {
         originalEnglishText.push(element.textContent);
     });
 }
-
-// Function to translate all text elements
 function translateAllElements() {
     const selectedLanguage = document.getElementById('language-select').value;
     localStorage.setItem('targetedLanguage', selectedLanguage);
@@ -218,13 +132,82 @@ function translateAllElements() {
         console.error('Translation error:', error);
     });
 }
-
-// Bind the onchange event to the language-select dropdown
 document.getElementById('language-select').addEventListener('change', function () {
     translateAllElements();
 });
-
-// Initialize the originalEnglishText variable with the original text of elements with data-translate attribute during initial page load
 document.addEventListener('DOMContentLoaded', function() {
     collectInitialText();
-});
+}); 
+
+function toggleChatbox() {
+    var chatbox = document.getElementById('chatbox');
+    var chatboyIcon = document.getElementById('chat-button');
+    chatbox.style.visibility = 'visible';
+    chatboyIcon.style.display = 'none';
+}
+function unToggleChatbox() {
+    var chatbox = document.getElementById('chatbox');
+    var chatboyIcon = document.getElementById('chat-button');
+    chatbox.style.visibility = 'hidden';
+    chatboyIcon.style.display = 'block';
+}
+function sendMessage(event) {
+    if(event.key == 'Enter'){
+        var inputElement = document.querySelector('.chat-box-footer input');
+            var message = inputElement.value.trim();
+            if (message !== '') {
+                var messageDiv = document.createElement('div');
+                messageDiv.className = 'chat-box-body-send';
+                messageDiv.innerHTML = '<p>' + message + '</p>';
+                var chatBody = document.getElementById('chat-box-body');
+                chatBody.appendChild(messageDiv);
+                inputElement.value = '';
+            }
+        fetch('/ask', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                question: message,
+            }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            var messageDiv = document.createElement('div');
+            messageDiv.className = 'chat-box-body-receive';
+        
+            // Regular expression to match lines starting with a number followed by a dot and space
+            const regex = /\b\d+\.\s.*?(?=\n|$)/g;
+        
+            var paragraphs = data['answers'].split('\n\n');
+            var pointsList = document.createElement('ul');
+        
+            paragraphs.forEach(paragraph => {
+                // Check if the paragraph contains points (lines starting with a number and dot)
+                if (paragraph.match(regex)) {
+                    var points = paragraph.match(regex);
+                    points.forEach(point => {
+                        var li = document.createElement('li');
+                        li.textContent = point.trim().replace(/^\d+\.\s/, ''); // Remove the number and dot
+                        pointsList.appendChild(li);
+                    });
+                } else {
+                    var p = document.createElement('p');
+                    p.textContent = paragraph.trim();
+                    messageDiv.appendChild(p);
+                }
+            });
+        
+            // Append the ordered list to the message div if points are found
+            if (pointsList.childNodes.length > 0) {
+                messageDiv.appendChild(pointsList);
+            }
+        
+            var chatBody = document.getElementById('chat-box-body');
+            chatBody.appendChild(messageDiv);
+            inputElement.value = '';
+        })
+                     
+    }
+}
