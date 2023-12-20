@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AAA - LogIn</title>
     <link rel="stylesheet" href="/static/css/login.css" />
+    
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
     <link
       rel="title icon"
       href="/static/images/head.png"
@@ -47,6 +49,13 @@
             <div class="form-group">
               <label for="password">Password</label>
               <input id="password" type="password" id="password" autocomplete="off" />
+            </div>
+          </div>
+          <button onclick="sendOTP()" class="btn">Send OTP</button>
+          <div class="otp-container">
+            <div class="form-group">
+              <label for="otp">OTP</label>
+              <input id="otp-btn" type="text" autocomplete="off" />
             </div>
           </div>
 
