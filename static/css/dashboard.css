@@ -45,7 +45,121 @@ body {
   background: var(--grey);
   overflow-x: hidden;
 }
-/* SIDEBAR */
+
+.notification-container {
+  position: fixed;
+  top: 20px; /* Adjust top position as needed */
+  right: 7rem; /* Adjust right position as needed */
+  display: flex;
+  align-items: center;
+}
+
+.logo-container {
+  position: fixed;
+  top: 10px; /* Adjust top position as needed */
+  right: 40rem; /* Adjust right position as needed */
+  display: flex;
+  align-items: center;
+  /* height: 2px;
+  width: 2px;
+  z-index: -1; */
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  max-width: 250px;
+  transition: max-width 0.3s ease-in-out;
+}
+.search-form.expanded {
+  max-width: 250px;
+}
+.search-input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.search-btn {
+  background-color: #3498db;
+  color: #fff;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.todo {
+  width: 80%;
+  margin: auto;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.todo-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.todo-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+.btn-download {
+  visibility: hidden;
+}
+.btn-View {
+  background-color: #3498db;
+  color: #fff;
+  border: 1px solid #3498db;
+}
+
+.btn-View i {
+  margin-left: 8px;
+}
+
+.btn:hover {
+  background-color: #2980b9;
+  border-color: #2980b9;
+}
+.context-menu {
+  position: absolute;
+  display: none;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.context-menu ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.context-menu li {
+  padding: 10px;
+  cursor: pointer;
+}
 #sidebar {
   position: fixed;
   top: 0;

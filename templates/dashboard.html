@@ -35,12 +35,12 @@
             <span class="text" data-translate>Vishaya</span>
           </a>
         </li>
-        <li>
+        <!-- <li>
           <a href="#">
             <i class="bx bxs-doughnut-chart"></i>
             <span class="text" data-translate>Analytics</span>
           </a>
-        </li>
+        </li> -->
         <li>
           <a href="/templates/trialcheck.html">
             <i class="bx bxs-file-pdf"></i>
@@ -55,12 +55,12 @@
         </li>
       </ul>
       <ul class="side-menu">
-        <li>
+        <!-- <li>
           <a href="/templates/settings.html">
             <i class="bx bxs-cog"></i>
             <span class="text" data-translate>Settings</span>
           </a>
-        </li>
+        </li> -->
         <li>
           <a href="{{ url_for('index') }}" class="logout">
             <i class="bx bxs-log-out-circle"></i>
@@ -76,6 +76,8 @@
       <!-- NAVBAR -->
       <nav>
         <i class="bx bx-menu"></i>
+        <a href="#" class="nav-link">Categories</a>
+        <!-- <form action="#">
         <a href="#" class="nav-link" data-translate>Categories</a>
         <form action="#">
           <div class="form-input">
@@ -84,19 +86,20 @@
               <i class="bx bx-search"></i>
             </button>
           </div>
-        </form>
-        <input type="checkbox" id="switch-mode" hidden />
-        <label for="switch-mode" class="switch-mode"></label>
-        <a href="#" class="notification">
-          <i class="bx bxs-bell"></i>
-          <span class="num">3</span>
-        </a>
+        </form> -->
+        <!-- <input type="checkbox" id="switch-mode" hidden />
+        <label for="switch-mode" class="switch-mode"></label> -->
 
-        <a href="#" class="profile">
-          <img src="/static/images/head.png" />
-        </a>
+        <!-- <div class="notification-container">
+          <a href="#" class="notification">
+            <i class="bx bxs-bell"></i>
+            <span class="num">3</span>
+          </a>
+        </div> -->
+
+        
       </nav>
-      <!-- NAVBAR -->
+      <!-- NAVBAR --></div>
 
       <!-- MAIN -->
       <main>
@@ -113,6 +116,10 @@
               </li>
             </ul>
           </div>
+          <!-- <div class="logo-container">
+            <a href="#" class="profile">
+              <img src="/static/images/head.png" />
+            </a> -->
           <a href="#" class="btn-download">
             <i class="bx bxs-cloud-download"></i>
             <span class="text" data-translate>Download PDF</span>
@@ -146,6 +153,13 @@
         <div class="table-data">
           <div class="order">
             <div class="head">
+              <h3>Uploads</h3>
+              <div class="search-form" id="searchForm">
+                <input type="search" placeholder="Search..." class="search-input" />
+                <button type="button" class="search-btn" onclick="toggleSearch()"> &nbsp;<i class="bx bx-search"></i></button>
+              </div>
+             
+              <!-- <i class="bx bx-filter"></i> -->
               <h3 data-translate>Uploads</h3>
               <i class="bx bx-search"></i>
               <i class="bx bx-filter"></i>
@@ -153,85 +167,91 @@
             <table>
               <thead>
                 <tr>
-                  <th data-translate>Sl no</th>
-                  <th data-translate>Due date</th>
-                  <th data-translate>Status</th>
+                  <th>Sl no</th>
+                  <th>Name</th>
+                  <th>Due date</th>
+                  <th>Upload</th>
+                  <th>Status</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>
                     <h5>1</h5>
-                    <p data-translate>Doc 0</p>
                   </td>
+                  <td><p>Doc 0</p></td>
                   <td>01-10-2021</td>
-                  <td><span class="status completed" data-translate>Completed</span></td>
+                  <td><button type="button" class="btn btn-Upload">Upload&nbsp;<i class='bx bxs-up-arrow-circle'></i></button></td>
+                  <td><button type="button" class="btn btn-View">View&nbsp;<i class='bx bxs-file-doc'></i></button></td>
+                    <td><button type="button" class="btn btn- Edit">Edit&nbsp;<i class='bx bxs-edit'></i></button></td>
+              
+                  <!-- <td><span class="status completed">Completed</span></td> -->
                 </tr>
                 <tr>
                   <td>
                     <h5>2</h5>
-                    <p data-translate>Doc 1</p>
                   </td>
+                  <td><p>Doc 0</p></td>
                   <td>01-10-2021</td>
-                  <td><span class="status pending" data-translate>Pending</span></td>
+                  <td><button type="button" class="btn btn-Upload">Upload&nbsp;<i class='bx bxs-up-arrow-circle'></i></button></td>
+                  <td><button type="button" class="btn btn-View">View&nbsp;<i class='bx bxs-file-doc'></i></button></td>
+                    <td><button type="button" class="btn btn- Edit">Edit&nbsp;<i class='bx bxs-edit'></i></button></td>
+              
                 </tr>
                 <tr>
                   <td>
                     <h5>3</h5>
-                    <p data-translate>Doc 2</p>
                   </td>
+                  <td><p>Doc 0</p></td>
                   <td>01-10-2021</td>
-                  <td><span class="status process" data-translate>Process</span></td>
+                  <td><button type="button" class="btn btn-Upload">Upload&nbsp;<i class='bx bxs-up-arrow-circle'></i></button></td>
+                  <td><button type="button" class="btn btn-View">View&nbsp;<i class='bx bxs-file-doc'></i></button></td>
+                    <td><button type="button" class="btn btn- Edit">Edit&nbsp;<i class='bx bxs-edit'></i></button></td>
+              
+                  <!-- <td><span class="status process">Process</span></td> -->
                 </tr>
                 <tr>
                   <td>
                     <h5>4</h5>
-                    <p data-translate>Doc 3</p>
                   </td>
+                  <td><p>Doc 0</p></td>
                   <td>01-10-2021</td>
-                  <td><span class="status pending" data-translate>Pending</span></td>
+                  <td><button type="button" class="btn btn-Upload">Upload&nbsp;<i class='bx bxs-up-arrow-circle'></i></button></td>
+                  <td><button type="button" class="btn btn-View">View&nbsp;<i class='bx bxs-file-doc'></i></button></td>
+                    <td><button type="button" class="btn btn- Edit">Edit&nbsp;<i class='bx bxs-edit'></i></button></td>
+              
                 </tr>
                 <tr>
                   <td>
                     <h5>5</h5>
-                    <p data-translate>Doc 4</p>
                   </td>
+                  <td><p>Doc 0</p></td>
                   <td>01-10-2021</td>
-                  <td><span class="status completed" data-translate>Completed</span></td>
+                  <td><button type="button" class="btn btn-Upload">Upload&nbsp;<i class='bx bxs-up-arrow-circle'></i></button></td>
+                  <td><button type="button" class="btn btn-View">View&nbsp;<i class='bx bxs-file-doc'></i></button></td>
+                    <td><button type="button" class="btn btn- Edit">Edit&nbsp;<i class='bx bxs-edit'></i></button></td>
+              
+                  <!-- <td><span class="status completed">Completed</span></td> -->
                 </tr>
               </tbody>
             </table>
           </div>
+<!--           
           <div class="todo">
             <div class="head">
-              <h3 data-translate>Todos</h3>
-              <i class="bx bx-plus"></i>
-              <i class="bx bx-filter"></i>
-            </div>
-            <ul class="todo-list">
-              <li class="completed">
-                <p data-translate>Todo List</p>
-                <i class="bx bx-dots-vertical-rounded"></i>
-              </li>
-              <li class="completed">
-                <p data-translate>Todo List</p>
-                <i class="bx bx-dots-vertical-rounded"></i>
-              </li>
-              <li class="not-completed">
-                <p data-translate>Todo List</p>
-                <i class="bx bx-dots-vertical-rounded"></i>
-              </li>
-              <li class="completed">
-                <p data-translate>Todo List</p>
-                <i class="bx bx-dots-vertical-rounded"></i>
-              </li>
-              <li class="not-completed">
-                <p data-translate>Todo List</p>
-                <i class="bx bx-dots-vertical-rounded"></i>
               </li>
             </ul>
-          </div>
-        </div>
+          
+           
+            <div class="context-menu" id="contextMenu">
+              <ul>
+                <li onclick="editTodo()">Edit</li>
+                <li onclick="deleteTodo()">Delete</li>
+              </ul>
+            </div>
+          </div> -->
+          
       </main>
       <!-- MAIN -->
     </section>

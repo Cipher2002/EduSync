@@ -107,3 +107,38 @@ switchMode.addEventListener("change", function () {
     document.body.classList.remove("dark");
   }
 });
+
+function toggleSearch() {
+  var searchForm = document.getElementById("searchForm");
+  searchForm.classList.toggle("expanded");
+}
+
+function addTodo() {
+  var todoList = document.querySelector(".todo-list");
+  var newTodo = document.createElement("li");
+  newTodo.innerHTML =
+    '<p>New Todo</p><i class="bx bx-dots-vertical-rounded" onclick="showContextMenu(this)"></i>';
+  todoList.appendChild(newTodo);
+}
+
+function showContextMenu(icon) {
+  var contextMenu = document.getElementById("contextMenu");
+  contextMenu.style.display = "block";
+  contextMenu.style.left = icon.offsetLeft + icon.offsetWidth + "px";
+  contextMenu.style.top = icon.offsetTop + "px";
+
+  document.addEventListener("click", function hideContextMenu() {
+    contextMenu.style.display = "none";
+    document.removeEventListener("click", hideContextMenu);
+  });
+}
+
+function editTodo() {
+  alert("Edit todo");
+}
+
+function deleteTodo() {
+  var contextMenu = document.getElementById("contextMenu");
+  var listItem = contextMenu.previousElementSibling;
+  listItem.parentNode.removeChild(listItem);
+}
