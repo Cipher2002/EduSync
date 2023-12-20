@@ -57,7 +57,7 @@ document.getElementById("login-button").addEventListener("click", (e) => {
       }),
     }).then((response) => {
         if (response.status === 200) {
-          window.location.href = "/document-verify";
+          window.location.href = "/dashboard";
         } else {
           alert("Invalid Credentials");
         }

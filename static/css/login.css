@@ -342,9 +342,10 @@ input[type="checkbox"]:checked::before {
 #popup-window {
   position: fixed;
   width: 300px;
-  height: 200px;
-  background: white;
-  border: 1px solid black;
+  height: 300px;
+  display: flex;
+  background: rgb(255, 255, 255);
+  box-shadow: 5px 5px 10px #bd8704;
   padding: 10px;
   margin: auto;
   top: 0;
@@ -353,4 +354,30 @@ input[type="checkbox"]:checked::before {
   left: 0;
   z-index: 10;
   display: none;
+}
+#popup-window input:hover {
+  background-color: rgb(246, 245, 245);
+}
+
+#close-button{
+  background-color: rgb(222, 87, 41);
+  padding: 2%;
+  border-radius: 10px;
+  margin-left: 70%;
+}
+
+#send-OTP{
+  background-color: rgb(230, 214, 92);
+  padding: 2%;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#otp-btn{
+  background-color: rgb(154, 234, 105);
+  padding: 2%;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }

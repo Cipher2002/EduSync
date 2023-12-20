@@ -144,18 +144,38 @@ function handleUserInput() {
         console.error('Error:', error);
     });
   }
-
+  var messageCounter = 1;
   function displayChatMessage(sender, message) {
-      // Get the chatbox content container
-      var chatboxContent = document.querySelector('.chatbox');
-
-      // Append the sender's message to the chatbox
-      var messageHTML = `<p>${sender}: ${message}</p>`;
-      chatboxContent.insertAdjacentHTML('beforeend', messageHTML);
-
-      // Scroll the chatbox to the bottom to show the latest messages
-      chatboxContent.scrollTop = chatboxContent.scrollHeight;
+    var chatboxContent = document.querySelector('.chatbox');
+    messageCounter++;
+    var messageHTML = `<p>${sender}: ${message}</p>`;
+    chatboxContent.insertAdjacentHTML('beforeend', messageHTML);
+    if (messageCounter === 2) {
+      createInputContainer();
+    }
+    chatboxContent.scrollTop = chatboxContent.scrollHeight;
   }
+  function createInputContainer() {
+    var chatboxContent = document.querySelector('.chatbox');
+    var inputContainerHTML = `
+      <div class="input-container">
+        <input id="chatbot-input" type="text" placeholder="Type your message" />
+        <button id="chatbot_upload" onclick="sendMessage()">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+        <div class="loading-dots"></div>
+      </div>
+    `;
+    chatboxContent.insertAdjacentHTML('beforeend', inputContainerHTML);
+  }
+  function editMessage() {
+    var chatboxContent = document.querySelector('.chatbox');
+    // Clear everything below the edited question
+    chatboxContent.innerHTML = chatboxContent.innerHTML.split('<p>').slice(0, 2).join('<p>');
+    // Recreate the input container
+    createInputContainer();
+    chatboxContent.scrollTop = chatboxContent.scrollHeight;
+  } 
 }
 
 let originalEnglishText = [];
