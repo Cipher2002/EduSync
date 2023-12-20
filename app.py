@@ -7,8 +7,8 @@ app.config["MONGO_URI"] = "mongodb+srv://Cipher:riKXPIASClOaF7sm@cluster0.iqltod
 mongodb_client = PyMongo(app)
 db = mongodb_client.db
 #  mongodb = riKXPIASClOaF7sm
-translate_api_url = "https://6774-34-125-72-125.ngrok-free.app/"
-cahtbot_api_url = None
+translate_api_url = "http://6b84-34-16-131-158.ngrok-free.app/"
+chatbot_api_url = "http://cc7c-34-69-59-197.ngrok-free.app/"
 
 @app.route('/')
 def index():
@@ -25,6 +25,16 @@ def translate():
         return jsonify({'translated_texts': translated_texts})
     else:
         return jsonify({'error': 'Failed to get translation'})
+    
+@app.route('/ask', methods=['POST'])
+def ask():
+    questions = request.get_json().get('question')
+    response = requests.post(f"{chatbot_api_url}/input_bot", json={'questions': questions})
+    if response.status_code == 200:
+        answers = response.json().get('answer')
+        return jsonify({'answers': answers})
+    else:
+        return jsonify({'error': 'Failed to get answers'})
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -41,6 +51,10 @@ def change():
 @app.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
     return render_template('dashboard.html')
+
+@app.route('/document-verify', methods=['GET', 'POST'])
+def document_verify():
+    return render_template('document-verify.html')
 
 @app.route('/login-data', methods=['POST'])
 def login_data():

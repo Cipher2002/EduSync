@@ -1,35 +1,20 @@
-localStorage.setItem('targetedLanguage', 'en');
-
 window.addEventListener('load', function () {
-  var logo = document.getElementById('load');
-  logo.style.transform = 'scale(1)';
-  document.getElementById('content').style.opacity = '0.3';
-  
-
-  setTimeout(function () {
-    logo.style.transform = 'scale(1.5)';
-  }, 1000);
-  logo.addEventListener('transitionend', function () {
-    document.getElementById('logo-container').style.opacity = '0';
-    document.getElementById('content').style.opacity = '1';
-  });
-});
-
-var faq = document.getElementsByClassName("faq-page");
-var i;
-for (i = 0; i < faq.length; i++) {
-    faq[i].addEventListener("click", function () {
-        this.classList.toggle("active");
-        var body = this.nextElementSibling;
-        if (body.style.display === "block") {
-            body.style.display = "none";
-        } else {
-            body.style.display = "block";
-        }
+    // Display the logo at its normal size
+    var logo = document.getElementById('load');
+    logo.style.transform = 'scale(1)';
+    document.getElementById('content').style.opacity = '0.3';
+    
+    // After a delay, slowly zoom in the logo
+    setTimeout(function () {
+      logo.style.transform = 'scale(1.5)';
+    }, 1000); // Adjust the delay as needed
+    // After the zoom-in transition is complete, hide loading logo and display content
+    logo.addEventListener('transitionend', function () {
+      document.getElementById('logo-container').style.opacity = '0';
+      document.getElementById('content').style.opacity = '1';
     });
-}
-
-let currentFontSize = 16;
+  });
+  let currentFontSize = 16;
 
 function increaseFontSize() {
   currentFontSize += 2;
@@ -95,69 +80,6 @@ setInterval(updateClock, 1000);
 window.onbeforeunload = function () {
       window.scrollTo(0, 0);
 }
-function toggleChatbox() {
-  var chatbox = document.getElementById('chatbox');
-  var chatboyIcon = document.getElementById('chatboy-icon');
-
-  if (chatbox.style.display === 'none' || chatbox.style.display === '') {
-      // Show chatbox and hide chatboy icon
-      chatbox.style.display = 'block';
-      chatboyIcon.style.display = 'none';
-  } else {
-      // Hide chatbox and show chatboy icon
-      chatbox.style.display = 'none';
-      chatboyIcon.style.display = 'block';
-  }
-}
-
-function sendMessage() {
-  const inputField = document.getElementById('chatbot-input');
-const uploadButton = document.getElementById('chatbot_upload');
-
-// Add an event listener to the button to trigger the function
-uploadButton.addEventListener('click', handleUserInput);
-
-function handleUserInput() {
-    const input_data = inputField.value;
-    console.log(input_data);
-
-    // Make a POST request to the Flask app
-    fetch('/ask', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            question: input_data,
-        }),
-    })
-    .then(response => response.json())
-    .then(data => {
-        // Handle the answers
-        displayChatMessage('User', input_data);
-        displayChatMessage('Chatbot', data['answers']);
-        
-        // Clear the input field
-        inputField.value = '';
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-  }
-
-  function displayChatMessage(sender, message) {
-      // Get the chatbox content container
-      var chatboxContent = document.querySelector('.chatbox');
-
-      // Append the sender's message to the chatbox
-      var messageHTML = `<p>${sender}: ${message}</p>`;
-      chatboxContent.insertAdjacentHTML('beforeend', messageHTML);
-
-      // Scroll the chatbox to the bottom to show the latest messages
-      chatboxContent.scrollTop = chatboxContent.scrollHeight;
-  }
-}
-
 let originalEnglishText = [];
 let translatedText = [];
 
@@ -172,7 +94,6 @@ function collectInitialText() {
 // Function to translate all text elements
 function translateAllElements() {
     const selectedLanguage = document.getElementById('language-select').value;
-    localStorage.setItem('targetedLanguage', selectedLanguage);
     if (selectedLanguage === 'en') {
       window.location.reload()
     }
@@ -209,3 +130,75 @@ document.getElementById('language-select').addEventListener('change', function (
 document.addEventListener('DOMContentLoaded', function() {
     collectInitialText();
 });
+window.addEventListener("DOMContentLoaded",() => {
+	const ctl = new CollapsibleTimeline("#timeline");
+});
+
+class CollapsibleTimeline {
+	constructor(el) {
+		this.el = document.querySelector(el);
+
+		this.init();
+	}
+	init() {
+		this.el?.addEventListener("click",this.itemAction.bind(this));
+	}
+	animateItemAction(button,ctrld,contentHeight,shouldCollapse) {
+		const expandedClass = "timeline__item-body--expanded";
+		const animOptions = {
+			duration: 300,
+			easing: "cubic-bezier(0.65,0,0.35,1)"
+		};
+
+		if (shouldCollapse) {
+			button.ariaExpanded = "false";
+			ctrld.ariaHidden = "true";
+			ctrld.classList.remove(expandedClass);
+			animOptions.duration *= 2;
+			this.animation = ctrld.animate([
+				{ height: `${contentHeight}px` },
+				{ height: `${contentHeight}px` },
+				{ height: "0px" }
+			],animOptions);
+		} else {
+			button.ariaExpanded = "true";
+			ctrld.ariaHidden = "false";
+			ctrld.classList.add(expandedClass);
+			this.animation = ctrld.animate([
+				{ height: "0px" },
+				{ height: `${contentHeight}px` }
+			],animOptions);
+		}
+	}
+	itemAction(e) {
+		const { target } = e;
+		const action = target?.getAttribute("data-action");
+		const item = target?.getAttribute("data-item");
+
+		if (action) {
+			const targetExpanded = action === "expand" ? "false" : "true";
+			const buttons = Array.from(this.el?.querySelectorAll(`[aria-expanded="${targetExpanded}"]`));
+			const wasExpanded = action === "collapse";
+
+			for (let button of buttons) {
+				const buttonID = button.getAttribute("data-item");
+				const ctrld = this.el?.querySelector(`#item${buttonID}-ctrld`);
+				const contentHeight = ctrld.firstElementChild?.offsetHeight;
+
+				this.animateItemAction(button,ctrld,contentHeight,wasExpanded);
+			}
+
+		} else if (item) {
+			const button = this.el?.querySelector(`[data-item="${item}"]`);
+			const expanded = button?.getAttribute("aria-expanded");
+
+			if (!expanded) return;
+
+			const wasExpanded = expanded === "true";
+			const ctrld = this.el?.querySelector(`#item${item}-ctrld`);
+			const contentHeight = ctrld.firstElementChild?.offsetHeight;
+
+			this.animateItemAction(button,ctrld,contentHeight,wasExpanded);
+		}
+	}
+}
