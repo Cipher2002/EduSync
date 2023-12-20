@@ -97,19 +97,11 @@
   <div class="inst">
     <div class="containers">
    <div class="card">
-      
 
-      
-       
        <div class="text">
         <p> <a href="/templates/newinstitute.html" target="_blank">New Institute</a>  </p>
           
       </div>
-       
-      
-       
-      
-        
     </div>
     <div class="card">
       
@@ -117,8 +109,6 @@
         <p><a href="/templates/newinstitute.html">Existing Institute</a></p>
           
       </div>
-      
-      
     </div>
     <div class="card">
       
@@ -126,8 +116,6 @@
         <p><a href="/templates/newinstitute.html">Online and Distance Learning</a></p>
           
       </div>
-      
-        
     </div>
     <div class="card">
       
@@ -135,15 +123,10 @@
         <p><a href="/templates/newinstitute.html">Online Learning</a></p>
           
       </div>
-      
-        
     </div>
-    
-    
     </div>
-  
   <main class="curve">
-    <h1 class="faq-heading" style="text-align: center;">Frequently Asked Questions</h1>
+    <h1 class="faq-heading" style="text-align: center;" data-translate>Frequently Asked Questions</h1>
     <section class="faq-container" >
         <div class="faq-one">
           <!-- faq question -->
@@ -240,148 +223,115 @@
         </div> -->
       </section>
     </main>
-    <div class="chatboy-icon" id="chatboy-icon" onclick="toggleChatbox()">
+    <!-- <div class="chatboy-icon" id="chatboy-icon" onclick="toggleChatbox()">
       <img
         src="/static/images/chatbot.png"
         alt="Chatboy Icon"
         width="50px"
         height="50px"
       />
-    </div>
+    </div> -->
+  
     <br><br><br><br>
   <div class="main">
     <div class="container">
-  
-  
-    
-    <div class="glass-card">
-      
-
-      
+    <!-- <div class="glass-card">
        <img src="/static/images/pmsc.png" >
        <div class="vl"></div>
-
-      
-       
        <div class="text">
-          <p>Prime Minister's Special Scholarship Scheme(PMSS)</p>
-            
+          <p data-translate>Prime Minister's Special Scholarship Scheme(PMSS)</p>
         </div>
-        
-    </div>
+    </div> -->
     <div class="glass-card">
       <img src="/static/images/rural.png" >
       <div class="vl"></div>
-      
-       
       <div class="text">
-         <p>Unnat Bharat Abhiyan in rural development process</p>
-           
+         <p data-translate>Unnat Bharat Abhiyan in rural development process</p>
        </div>
-        
     </div>
     <div class="glass-card">
       <img src="/static/images/scholarship.png" >
       <div class="vl"></div>
-      
-       
        <div class="text">
-          <p>National <br>E-Scholarship</p>
-            
+          <p data-translate>National <br>E-Scholarship</p>
         </div>
-        
     </div>
     <div class="glass-card">
       <img src="/static/images/vidya.png" >
       <div class="vl"></div>
-      
-       
        <div class="text">
-          <p>Vidya Lakshmi</p>
-            
+          <p data-translate>Vidya Lakshmi</p>
         </div>
-        
     </div>
     <div class="glass-card">
       <img src="/static/images/pragathi.png" >
       <div class="vl"></div>
-      
-       
        <div class="text">
-          <p>Pragathi and Saksham</p>
-            
-        </div>
-        
+          <p data-translate>Pragathi and Saksham</p>
+        </div>  
     </div>
-    
     </div>
     <div class="container1">
-    
-    
         <div class="glass-card">
           <img src="/static/images/innovation.png" >
-          <div class="vl"></div>
-      
-       
+          <div class="vl"></div>   
        <div class="text">
-          <p>India Innovation Initiative</p>
-            
-        </div>
-            
+          <p data-translate>India Innovation Initiative</p>
+        </div>     
         </div>
         <div class="glass-card">
           <img src="/static/images/women.png" >
           <div class="vl"></div>
-      
-       
        <div class="text">
-          <p>Women Empowerment</p>
-            
+          <p data-translate>Women Empowerment</p>
         </div>
-            
         </div>
         <div class="glass-card">
           <img src="/static/images/disabled.png" >
           <div class="vl"></div>
-      
-       
        <div class="text">
-          <p>Facilities for Differently Abled</p>
-            
+          <p data-translate>Facilities for Differently Abled</p>
         </div>
-            
         </div>
         <div class="glass-card">
           <img src="/static/images/Research.png" >
           <div class="vl"></div>
-      
-       
        <div class="text">
-          <p>Reasearch Funds</p>
-            
+          <p data-translate>Reasearch Funds</p>
         </div>
-        
         </div>
-        
-        
         </div>
     </div>
-  
-
     <!-- Chatbox -->
     <div class="chatbox" id="chatbox">
       <!-- Your chatbox content goes here -->
       <p>User: Hello! I'm Vishaya.</p>
-      <div class="input-container">
+      <!--<div class="input-container">
         <input id="chatbot-input" type="text" placeholder="Type your message" />
         <button id="chatbot_upload" onclick="sendMessage()">
           <i class="fas fa-paper-plane"></i>
         </button>
         <div class="loading-dots"></div>
       </div>
-      <!-- Close button -->
       <span class="close-btn" onclick="toggleChatbox()">X</span>
+    </div> -->
+    <button id="chat-button" class="chat-button" onclick="toggleChatbox()" data-translate>Talk with Me</button>
+    
+    <div class="chat-box" id="chatbox">
+      <div class="chat-box-header">
+          <h3 data-translate>Message Us</h3>
+          <p onclick="unToggleChatbox()"><i class="fa fa-times"></i></p>
+      </div>
+      <div class="chat-box-body" id="chat-box-body">
+          <div class="chat-box-body-receive ">
+              <p data-translate="">Hi How may i help you ?</p>
+          </div>
+      </div>
+      <div class="chat-box-footer">
+          <input placeholder="Enter..." type="text" onkeydown="sendMessage(event)" />
+          <i class="send far fa-paper-plane"></i>
     </div>
+  </div>
 
     <footer>
       <div class="row">
@@ -389,6 +339,8 @@
           <div class="column"><a href="https://www.aicte-india.org/privacy-policy">Privacy Policy</a></div>
           <div class="column"><a href="https://www.aicte-india.org/grievance/rti">Right to Information</a></div>
           <div class="column"><a href="https://www.aicte-india.org/reports/overview">Reports</a></div>
+
+  
       </div>
       <div class="row">
           <div class="column"><a href="https://www.aicte-india.org/directory">Directory</a></div>

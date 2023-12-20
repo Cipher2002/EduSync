@@ -33,7 +33,7 @@
       <div class="form-section">
         <div class="form-wrapper">
           <div class="logo-container">
-            <a href="#" class="logo-container">
+            <a href="{{ url_for('index') }}" class="logo-container">
               <img src="/static/images/logo1.png" alt="Logo" />
             </a>
           </div>
@@ -67,12 +67,18 @@
           <div id="popup-window">
             <h1 data-translate>OTP Using JavaScript</h1>
             <div class="form">
-              <input type="email" id="popup-email" placeholder="Enter Email" />
-              <div class="otpverify">
-                <input type="text" id="otp_inp" placeholder="Enter the OTP"/>
-                <button class="btn" id="otp-btn" data-translate>Verify</button>
+              <div class="form-group">
+                <label for="popup-email" data-translate>Email</label>
+                <input type="email" id="popup-email" placeholder="Enter Email" />
               </div>
-              <button onclick="sendOTP()" class="btn" data-translate>Send OTP</button>
+
+              <button id="send-OTP" onclick="sendOTP()" class="btn" data-translate>Send OTP</button>
+
+              <div class="form-group">
+                <input type="text" id="otp_inp" placeholder="Enter the OTP"/>
+              </div>
+
+              <button class="btn" id="otp-btn" data-translate>Verify</button>
             </div>
             <button id="close-button" data-translate>Close</button>
           </div>
