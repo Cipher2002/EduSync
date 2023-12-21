@@ -54,7 +54,7 @@
         <a href="https://www.aicte-india.org/bulletins" class="nav-link" data-translate>News</a>
         
         <a href="https://www.aicte-india.org/about-us/history" class="nav-link" data-translate>About</a>
-        <a href="#" class="nav-link" data-translate>Affidavit</a>
+        <a href="{{ url_for('affidavit') }}" class="nav-link" data-translate>Affidavit</a>
 
         <select id="language-select" class="nav-link" name="languages" style="background-color: #DAB88B; border-color: #DAB88B;color: white">
           <option value="en">English</option>
@@ -99,28 +99,28 @@
    <div class="card">
 
        <div class="text">
-        <p> <a href="/templates/newinstitute.html" target="_blank">New Institute</a>  </p>
+        <p> <a href="{{ url_for('newInstitute') }}" target="_blank" data-translate>New Institute</a>  </p>
           
       </div>
     </div>
     <div class="card">
       
       <div class="text">
-        <p><a href="/templates/newinstitute.html">Existing Institute</a></p>
+        <p><a href="{{ url_for('newInstitute') }}" data-translate>Existing Institute</a></p>
           
       </div>
     </div>
     <div class="card">
       
       <div class="text">
-        <p><a href="/templates/newinstitute.html">Online and Distance Learning</a></p>
+        <p><a href="{{ url_for('newInstitute') }}" data-translate>Online and Distance Learning</a></p>
           
       </div>
     </div>
     <div class="card">
       
       <div class="text">
-        <p><a href="/templates/newinstitute.html">Online Learning</a></p>
+        <p><a href="{{ url_for('newInstitute') }}" data-translate>Online Learning</a></p>
           
       </div>
     </div>
@@ -302,19 +302,7 @@
         </div>
         </div>
     </div>
-    <!-- Chatbox -->
-    <div class="chatbox" id="chatbox">
-      <!-- Your chatbox content goes here -->
-      <p>User: Hello! I'm Vishaya.</p>
-      <!--<div class="input-container">
-        <input id="chatbot-input" type="text" placeholder="Type your message" />
-        <button id="chatbot_upload" onclick="sendMessage()">
-          <i class="fas fa-paper-plane"></i>
-        </button>
-        <div class="loading-dots"></div>
-      </div>
-      <span class="close-btn" onclick="toggleChatbox()">X</span>
-    </div> -->
+
     <button id="chat-button" class="chat-button" onclick="toggleChatbox()" data-translate>Talk with Me</button>
     
     <div class="chat-box" id="chatbox">
@@ -335,24 +323,24 @@
 
     <footer>
       <div class="row">
-          <div class="column"> <a href="https://www.aicte-india.org/terms-conditions"> Terms  of use</a></div>
-          <div class="column"><a href="https://www.aicte-india.org/privacy-policy">Privacy Policy</a></div>
-          <div class="column"><a href="https://www.aicte-india.org/grievance/rti">Right to Information</a></div>
-          <div class="column"><a href="https://www.aicte-india.org/reports/overview">Reports</a></div>
+          <div class="column"> <a href="https://www.aicte-india.org/terms-conditions" data-translate> Terms  of use</a></div>
+          <div class="column"><a href="https://www.aicte-india.org/privacy-policy" data-translate>Privacy Policy</a></div>
+          <div class="column"><a href="https://www.aicte-india.org/grievance/rti" data-translate>Right to Information</a></div>
+          <div class="column"><a href="https://www.aicte-india.org/reports/overview" data-translate>Reports</a></div>
 
   
       </div>
       <div class="row">
-          <div class="column"><a href="https://www.aicte-india.org/directory">Directory</a></div>
-          <div class="column"><a href="https://www.aicte-india.org/centralized-support-system">Centralized Support System</a></div>
-          <div class="column"><a href="https://www.aicte-india.org/survey-form">Reporting by Institutes</a></div>
-          <div class="column"><a href="https://facilities.aicte-india.org/dashboard/pages/angulardashboard.php#!/approved">Verify Institute Approval</a></div>
+          <div class="column"><a href="https://www.aicte-india.org/directory" data-translate>Directory</a></div>
+          <div class="column"><a href="https://www.aicte-india.org/centralized-support-system" data-translate>Centralized Support System</a></div>
+          <div class="column"><a href="https://www.aicte-india.org/survey-form" data-translate>Reporting by Institutes</a></div>
+          <div class="column"><a href="https://facilities.aicte-india.org/dashboard/pages/angulardashboard.php#!/approved" data-translate>Verify Institute Approval</a></div>
       </div>
       <div class="row">
-          <div class="column"><a href="https://www.aicte-india.org/contact">Contact Us</a></div>
-          <div class="column"><a href="https://www.aicte-india.org/CyberSecurity">Cyber Security</a></div>
-          <div class="column"><a href="https://deemeduniversity.aicte-india.org/">Deemed University Result</a></div>
-          <div class="column"><a href="https://facilities.aicte-india.org/pgdm/">PGDM Student Verification</a></div>
+          <div class="column"><a href="https://www.aicte-india.org/contact" data-translate>Contact Us</a></div>
+          <div class="column"><a href="https://www.aicte-india.org/CyberSecurity" data-translate>Cyber Security</a></div>
+          <div class="column"><a href="https://deemeduniversity.aicte-india.org/" data-translate>Deemed University Result</a></div>
+          <div class="column"><a href="https://facilities.aicte-india.org/pgdm/" data-translate>PGDM Student Verification</a></div>
       </div>
   </footer>
 </div>
