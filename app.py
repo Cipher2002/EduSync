@@ -1,24 +1,25 @@
-from flask import Flask, render_template, request, jsonify, redirect
+import os
+from werkzeug.utils import secure_filename
+from flask import Flask, render_template, request, jsonify, send_file, redirect, url_for, session, flash, request
+from data import doc, EoA, inst, Intake, Name, NRI, site, Merge, University, Bank, Closure
 import requests
 from flask_pymongo import PyMongo
-# import fitz  # PyMuPDF library
-# from nltk.tokenize import word_tokenize
-# from nltk.corpus import stopwords
+from docx import Document
 
 app = Flask(__name__)
 app.config["MONGO_URI"] = "mongodb+srv://Cipher:riKXPIASClOaF7sm@cluster0.iqltodr.mongodb.net/registrations"
 mongodb_client = PyMongo(app)
 db = mongodb_client.db
 #  mongodb = riKXPIASClOaF7sm
-translate_api_url = "http://c6dc-34-105-69-168.ngrok-free.app/"
-chatbot_api_url = "http://c2c6-34-66-160-253.ngrok-free.app/"
+translate_api_url = "http://349e-34-141-145-71.ngrok-free.app/"
+chatbot_api_url = "http://e0a6-34-125-25-170.ngrok-free.app/"
 
 @app.route('/')
 def index():
     return render_template('index.html')
 
 @app.route('/translate', methods=['POST'])
-def translate():    
+def translate():  
     data = request.get_json()
     texts = data.get('texts', [])
     target_lang = data.get('target_lang', 'en')
@@ -47,6 +48,10 @@ def register():
 def login():
     return render_template('login.html')
 
+@app.route('/newInsitute', methods=['GET', 'POST'])
+def newInstitute():
+    return render_template('newInstitute.html')
+
 @app.route('/change', methods=['GET', 'POST'])
 def change():
     return render_template('changep.html')
@@ -58,6 +63,200 @@ def dashboard():
 @app.route('/document-verify', methods=['GET', 'POST'])
 def document_verify():
     return render_template('document-verify.html')
+
+@app.route('/addingFile', methods=['GET', 'POST'])
+def addingFile():
+    return render_template('addingFile.html', doc = doc, title = 'Applications types')
+@app.route('/addingFile',methods = ['GET','POST'])
+def apply():
+    if request.method == 'POST':
+        global appType
+        appType = request.form.get("application for")
+        if 'pressed' in request.form:
+            return redirect(url_for("pdfDisp"))
+count = 0
+value = list()
+@app.route("/pdf", methods=['GET', 'POST'])
+def pdfDisp():
+    index: list = list()
+    global count
+    if count == 0 and not request.form.keys() and request.method == 'GET' and appType:
+            # Use a dictionary to map app_type to index
+            index_dict = {
+                'EoA': EoA,
+                'NRI': NRI,
+                'site': site,
+                'Merge': Merge,
+                'Intake': Intake,
+                'Closure': Closure,
+                'inst': inst,
+                'Name': Name,
+                'University': University,
+                'Bank': Bank
+            }
+            index = index_dict[appType]
+            count += 1
+            global value
+            value = index
+            app.config['MAX_CONTENT_LENGTH'] = len(value)*1024*1024
+            return render_template("open.html", index=index, doc=doc, title='Upload Your Files')
+    count = 0
+    if request.files.keys() : 
+                for i in value:
+                    file = request.files[i]
+                    filename = secure_filename(file.filename)
+                    file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                    session['filename'] = filename
+                return redirect(url_for('fileStore'))
+    count = 0
+    return redirect(url_for('pdfDisp'))
+
+@app.route("/home", methods = ['GET','POST'])
+def fileStore():
+    file = session.get('file',None)
+    global count 
+    count = 0
+    return 'Received and saved file: ' + str(file)
+
+@app.route('/affidavit', methods=['GET', 'POST'])
+def affidavit():
+    return render_template('affidavit.html')
+def generate_word_file(
+    name,
+    mobile,
+    mail,
+    designation,
+    trust,
+    parent,
+    age,
+    address,
+    institution,
+    date,
+    userid,
+    transactionid,
+    transactiondate,
+    executant,
+    edesignation,
+    eaddress,
+    vdate,
+    vmonth,
+    vyear
+):
+    # Load the Word template
+    doc = Document("AFFIDAVIT.docx")
+
+    # Replace placeholders with user data
+    for paragraph in doc.paragraphs:
+        if "{{name}}" in paragraph.text:
+            paragraph.text = paragraph.text.replace("{{name}}", name)
+
+        if "{{mobile}}" in paragraph.text:
+            paragraph.text = paragraph.text.replace("{{mobile}}",mobile)
+
+        if "{{mail}}" in paragraph.text:
+            paragraph.text = paragraph.text.replace("{{mail}}",mail)
+
+        if "{{designation}}" in paragraph.text:
+            paragraph.text = paragraph.text.replace("{{designation}}", designation)
+
+        if "{{trust}}" in paragraph.text:
+            paragraph.text = paragraph.text.replace("{{trust}}", trust)
+
+        if "{{parent}}" in paragraph.text:
+            paragraph.text = paragraph.text.replace("{{parent}}", parent)
+
+        if "{{age}}" in paragraph.text:
+            paragraph.text = paragraph.text.replace("{{age}}", age)
+
+        if "{{address}}" in paragraph.text:
+            paragraph.text = paragraph.text.replace("{{address}}", address)
+
+        if "{{institution}}" in paragraph.text:
+            paragraph.text = paragraph.text.replace("{{institution}}", institution)
+
+        if "{{date}}" in paragraph.text:
+            paragraph.text = paragraph.text.replace("{{date}}", date)
+
+        if "{{userid}}" in paragraph.text:
+            paragraph.text = paragraph.text.replace("{{userid}}", userid)
+
+        if "{{transactionid}}" in paragraph.text:
+            paragraph.text = paragraph.text.replace("{{transactionid}}", transactionid)
+
+        if "{{transactiondate}}" in paragraph.text:
+            paragraph.text = paragraph.text.replace("{{transactiondate}}",transactiondate)
+
+        if "{{executant}}" in paragraph.text:
+            paragraph.text = paragraph.text.replace("{{executant}}",executant)
+
+        if "{{edesignation}}" in paragraph.text:
+            paragraph.text = paragraph.text.replace("{{edesignation}}",edesignation)
+
+        if "{{eaddress}}" in paragraph.text:
+            paragraph.text = paragraph.text.replace("{{eaddress}}",eaddress)
+
+        if "{{vdate}}" in paragraph.text:
+            paragraph.text = paragraph.text.replace("{{vdate}}",vdate)
+
+        if "{{vmonth}}" in paragraph.text:
+            paragraph.text = paragraph.text.replace("{{vmonth}}",vmonth)
+
+        if "{{vyear}}" in paragraph.text:
+            paragraph.text = paragraph.text.replace("{{vyear}}",vyear)
+
+            # Save the filled Word document
+            doc.save("static/filled_template.docx")
+
+    return "static/filled_template.docx"
+
+@app.route('/generate-affidavit', methods=['GET', 'POST'])
+def generate_affidavit():
+    if request.method == "POST":
+        name = request.form["name"]
+        mobile = request.form["mobile"]
+        mail = request.form["mail"]
+        designation = request.form["designation"]
+        trust = request.form["trust"]
+        parent = request.form["parent"]
+        age = request.form["age"]
+        address = request.form["address"]
+        institution = request.form["institution"]
+        date = request.form["date"]
+        userid = request.form["userid"]
+        transactionid = request.form["transactionid"]
+        transactiondate = request.form["transactiondate"]
+        executant = request.form["executant"]
+        edesignation = request.form["edesignation"]
+        eaddress = request.form["eaddress"]
+        vdate = request.form["vdate"]
+        vmonth = request.form["vmonth"]
+        vyear = request.form["vyear"]
+        word_file_path = generate_word_file(
+            name,
+            mobile,
+            mail,
+            designation,
+            trust,
+            parent,
+            age,
+            address,
+            institution,
+            date,
+            userid,
+            transactionid,
+            transactiondate,
+            executant,
+            edesignation,
+            eaddress,
+            vdate,
+            vmonth,
+            vyear,
+        )
+        # Provide the generated Word file for download
+        return send_file(word_file_path, as_attachment=True)
+
+    return render_template("generate_affidavit.html")
+
 
 @app.route('/login-data', methods=['POST'])
 def login_data():
@@ -106,74 +305,6 @@ def register_data():
     except Exception as e:
         print("Error:", e)
         return jsonify({'error': str(e)})
-    
-
-# def extract_text_from_pdf(pdf_content):
-#     doc = fitz.open(stream=pdf_content, filetype="pdf")
-#     text = ""
-#     for page_num in range(doc.page_count):
-#         page = doc[page_num]
-#         text += page.get_text()
-#     return text
-
-# # Function to extract the template from a long PDF
-# def extract_template_from_long_pdf(long_pdf_content, template_start, template_end):
-#     start_index = long_pdf_content.find(template_start)
-#     end_index = long_pdf_content.find(template_end)
-
-#     if start_index != -1 and end_index != -1:
-#         template = long_pdf_content[start_index:end_index + len(template_end)]
-#         return template
-#     else:
-#         return None
-
-# # Function to preprocess and calculate word overlap
-# def calculate_word_overlap(doc1, doc2):
-#     stop_words = set(stopwords.words("english"))
-#     tokens1 = set(word.lower() for word in word_tokenize(doc1) if word.isalpha() and word.lower() not in stop_words)
-#     tokens2 = set(word.lower() for word in word_tokenize(doc2) if word.isalpha() and word.lower() not in stop_words)
-
-#     # Calculate Jaccard similarity (word overlap)
-#     overlap = len(tokens1.intersection(tokens2))
-#     union = len(tokens1.union(tokens2))
-#     similarity_score = overlap / union if union > 0 else 0
-
-#     return similarity_score
-
-# Route to handle document uploads
-# @app.route('/upload', methods=['POST'])
-# def upload_document():
-#     if 'file' not in request.files:
-#         return jsonify({'error': 'No file part'})
-
-#     uploaded_file = request.files['file']
-#     if uploaded_file.filename == '':
-#         return jsonify({'error': 'No selected file'})
-
-#     # Check if the file is a PDF
-#     if uploaded_file.filename.endswith('.pdf'):
-#         # Read the uploaded PDF document
-#         uploaded_document = extract_text_from_pdf(uploaded_file.read())
-
-#         # Example: Extracting a template from a long PDF
-#         long_pdf_content = extract_text_from_pdf(open('C:\Users\anshc\Downloads\trial', 'rb').read())
-#         template_start = "START_MARKER"
-#         template_end = "END_MARKER"
-#         template = extract_template_from_long_pdf(long_pdf_content, template_start, template_end)
-
-#         if template is not None:
-#             # Calculate word overlap
-#             similarity_score = calculate_word_overlap(template, uploaded_document)
-
-#             # You can set a threshold to determine if the document matches the template
-#             threshold = 0.3
-#             is_match = similarity_score >= threshold
-
-#             return jsonify({'similarity_score': similarity_score, 'is_match': is_match})
-#         else:
-#             return jsonify({'error': 'Template not found in the long PDF.'})
-#     else:
-#         return jsonify({'error': 'Unsupported file format. Please upload a PDF file.'})
 
 
 

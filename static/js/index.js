@@ -1,19 +1,19 @@
 localStorage.setItem('targetedLanguage', 'en');
 
-// window.addEventListener('load', function () {
-//   var logo = document.getElementById('load');
-//   logo.style.transform = 'scale(1)';
-//   document.getElementById('content').style.opacity = '0.3';
+window.addEventListener('load', function () {
+  var logo = document.getElementById('load');
+  logo.style.transform = 'scale(1)';
+  document.getElementById('content').style.opacity = '0.3';
   
 
-//   setTimeout(function () {
-//     logo.style.transform = 'scale(1.5)';
-//   }, 1000);
-//   logo.addEventListener('transitionend', function () {
-//     document.getElementById('logo-container').style.opacity = '0';
-//     document.getElementById('content').style.opacity = '1';
-//   });
-// });
+  setTimeout(function () {
+    logo.style.transform = 'scale(1.5)';
+  }, 1000);
+  logo.addEventListener('transitionend', function () {
+    document.getElementById('logo-container').style.opacity = '0';
+    document.getElementById('content').style.opacity = '1';
+  });
+});
 
 
 var faq = document.getElementsByClassName("faq-page");
