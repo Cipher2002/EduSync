@@ -24,3 +24,7 @@ The models were deployed on Google Colab notebooks to access the T4 GPU's and ma
 2. https://colab.research.google.com/drive/1oM-ZdIhIFRDgmrMww0NahwcLyjLVZ9Y3?usp=sharing
 
 Make sure to run the projects and change the ngrok links in the app.py file.
+
+Upload the Translation model to the Google Colab notebook 
+
+1. https://drive.google.com/file/d/1qAFg1FQUHZek7s-MJaadPKPzN6CUoh89/view?usp=sharing
